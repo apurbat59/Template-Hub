@@ -4,7 +4,7 @@ A comprehensive template platform that provides ready-to-use React/Next.js templ
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://templatehub-demo.vercel.app) | [GitHub Repository](https://github.com/yourusername/template-platform)
+[View Live Demo](https://templatehub-demo.vercel.app) | [GitHub Repository](https://github.com/apurbat59/template-platform)
 
 ## ✨ Features
 
@@ -65,7 +65,7 @@ A comprehensive template platform that provides ready-to-use React/Next.js templ
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/template-platform.git
+   git clone https://github.com/apurbat59/template-platform.git
    cd template-platform
    ```
 
@@ -201,9 +201,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+- GitHub: [@apurbat59](https://github.com/apurbat59)
+- LinkedIn: [Apurba Thakur](https://linkedin.com/in/apurba-thakur)
+- Email: apurbathakur@example.com
 
 ## 🙏 Acknowledgments
 
