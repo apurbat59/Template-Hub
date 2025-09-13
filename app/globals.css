@@ -1,0 +1,126 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color tokens to blue and white theme from design brief */
+  --background: #ffffff; /* Pure white main background */
+  --foreground: #0056b3; /* Deep trustworthy blue for primary text */
+  --card: #e9ecef; /* Light gray for card backgrounds */
+  --card-foreground: #374151; /* Dark gray for card text */
+  --popover: rgba(255, 255, 255, 0.9); /* Semi-transparent white popover */
+  --popover-foreground: #0056b3; /* Blue text on popovers */
+  --primary: #0056b3; /* Deep blue for primary buttons and links */
+  --primary-foreground: #ffffff; /* White text on primary elements */
+  --secondary: #007bff; /* Vibrant blue for secondary actions */
+  --secondary-foreground: #ffffff; /* White text on secondary elements */
+  --muted: #f1f3f5; /* Soft gray for muted backgrounds */
+  --muted-foreground: #374151; /* Dark gray for muted text */
+  --accent: #007bff; /* Vibrant blue for highlights and CTAs */
+  --accent-foreground: #ffffff; /* White text on accent elements */
+  --destructive: #dc2626; /* Red for destructive actions */
+  --destructive-foreground: #ffffff; /* White text on destructive elements */
+  --border: #ced4da; /* Light gray for borders */
+  --input: #ffffff; /* White input field background */
+  --ring: #0056b3; /* Blue focus ring */
+  --chart-1: #0056b3; /* Chart color 1 - deep blue */
+  --chart-2: #007bff; /* Chart color 2 - vibrant blue */
+  --chart-3: #f1f3f5; /* Chart color 3 - soft gray */
+  --chart-4: #e9ecef; /* Chart color 4 - light gray */
+  --chart-5: #ffffff; /* Chart color 5 - white */
+  --radius: 0.5rem; /* Corner rounding for modern aesthetic */
+  --sidebar: #ffffff; /* White sidebar background */
+  --sidebar-foreground: #0056b3; /* Blue sidebar text */
+  --sidebar-primary: #f1f3f5; /* Soft gray sidebar primary background */
+  --sidebar-primary-foreground: #0056b3; /* Blue sidebar primary text */
+  --sidebar-accent: #007bff; /* Vibrant blue sidebar accent */
+  --sidebar-accent-foreground: #ffffff; /* White sidebar accent text */
+  --sidebar-border: #ced4da; /* Light gray sidebar border */
+  --sidebar-ring: #0056b3; /* Blue sidebar focus ring */
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card: #1e293b;
+  --card-foreground: #f1f5f9;
+  --popover: #0f172a;
+  --popover-foreground: #f1f5f9;
+  --primary: #007bff;
+  --primary-foreground: #ffffff;
+  --secondary: #0056b3;
+  --secondary-foreground: #ffffff;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #007bff;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #334155;
+  --input: #1e293b;
+  --ring: rgba(0, 123, 255, 0.5);
+  --chart-1: #007bff;
+  --chart-2: #0056b3;
+  --chart-3: #4b5563;
+  --chart-4: #dc2626;
+  --chart-5: #0891b2;
+  --sidebar: #1e293b;
+  --sidebar-foreground: #f1f5f9;
+  --sidebar-primary: #334155;
+  --sidebar-primary-foreground: #f1f5f9;
+  --sidebar-accent: #007bff;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #334155;
+  --sidebar-ring: rgba(0, 123, 255, 0.5);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
