@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Progress } from "@/components/ui/progress"
 import {
   Search,
   Filter,
@@ -34,6 +35,15 @@ import {
   SortAsc,
   SortDesc,
   Wand2,
+  Sparkles,
+  Zap,
+  Layers,
+  Palette,
+  MousePointer,
+  Activity,
+  Target,
+  Award,
+  Rocket,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -308,53 +318,65 @@ export default function ${template.name.replace(/\s+/g, '')}() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30">
       {/* Header */}
-      <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <header className="border-b border-slate-200/60 bg-white/80 backdrop-blur-xl sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <Code className="w-5 h-5 text-primary-foreground" />
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200">
+                <Rocket className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-bold text-foreground">TemplateHub</span>
+              <div>
+                <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                  TemplateHub
+                </span>
+                <p className="text-xs text-slate-500 -mt-1">AI-Powered Templates</p>
+              </div>
             </Link>
           </div>
           
           <div className="flex items-center space-x-4">
-            <div className="relative">
-              <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+            <div className="hidden md:flex items-center space-x-2 bg-slate-100/50 rounded-lg px-3 py-1">
+              <Activity className="w-4 h-4 text-green-500" />
+              <span className="text-sm text-slate-600">Live</span>
+            </div>
+            
+            <div className="relative group">
+              <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
               <Input
                 type="text"
                 placeholder="Search templates..."
-                className="pl-10 w-64"
+                className="pl-10 w-64 bg-white/50 border-slate-200 focus:bg-white focus:border-blue-300 transition-all duration-200"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
             
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className="hover:bg-slate-100/50 transition-all duration-200">
               <Filter className="w-4 h-4 mr-2" />
               Filter
             </Button>
             
             <div className="relative">
-              <Bell className="w-6 h-6 text-muted-foreground cursor-pointer" />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
+              <Bell className="w-6 h-6 text-slate-600 cursor-pointer hover:text-blue-600 transition-colors" />
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-red-500 to-pink-500 rounded-full animate-pulse"></div>
             </div>
             
-            <div className="flex items-center space-x-2">
-              <Avatar>
+            <div className="flex items-center space-x-3 bg-slate-50/50 rounded-lg px-3 py-2 hover:bg-slate-100/50 transition-all duration-200 cursor-pointer">
+              <Avatar className="ring-2 ring-blue-200">
                 <AvatarImage src="/placeholder-user.jpg" />
-                <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                <AvatarFallback className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+                  {user.name.charAt(0)}
+                </AvatarFallback>
               </Avatar>
               <div className="hidden md:block">
-                <p className="text-sm font-medium">{user.name}</p>
-                <p className="text-xs text-muted-foreground">{user.email}</p>
+                <p className="text-sm font-medium text-slate-900">{user.name}</p>
+                <p className="text-xs text-slate-500">{user.email}</p>
               </div>
             </div>
             
-            <Button variant="outline" size="sm" onClick={handleLogout}>
+            <Button variant="outline" size="sm" onClick={handleLogout} className="hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-all duration-200">
               <LogOut className="w-4 h-4 mr-2" />
               Logout
             </Button>
@@ -365,83 +387,138 @@ export default function ${template.name.replace(/\s+/g, '')}() {
       <div className="container mx-auto px-4 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">
-            Welcome back, {user.name}! 👋
-          </h1>
-          <p className="text-muted-foreground">
-            {user.type === 'student' ? 'Student' : 'User'} • {user.email}
-          </p>
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-900 via-blue-800 to-purple-800 bg-clip-text text-transparent mb-2">
+                Welcome back, {user.name}! 👋
+              </h1>
+              <p className="text-slate-600 text-lg">
+                {user.type === 'student' ? 'Student' : 'User'} • {user.email}
+              </p>
+            </div>
+            <div className="hidden lg:flex items-center space-x-4">
+              <div className="text-right">
+                <p className="text-2xl font-bold text-slate-900">{combinedTemplates.length}</p>
+                <p className="text-sm text-slate-500">Total Templates</p>
+              </div>
+              <div className="w-px h-12 bg-slate-200"></div>
+              <div className="text-right">
+                <p className="text-2xl font-bold text-green-600">{userGeneratedTemplates.length}</p>
+                <p className="text-sm text-slate-500">AI Generated</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <Card className="bg-gradient-to-br from-blue-50 to-blue-100/50 border-blue-200/50 hover:shadow-lg transition-all duration-300 group">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-blue-600">Total Templates</p>
+                    <p className="text-2xl font-bold text-blue-900">{combinedTemplates.length}</p>
+                  </div>
+                  <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                    <Layers className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <Progress value={75} className="h-2" />
+                  <p className="text-xs text-blue-600 mt-1">Growing collection</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-purple-50 to-purple-100/50 border-purple-200/50 hover:shadow-lg transition-all duration-300 group">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-purple-600">AI Generated</p>
+                    <p className="text-2xl font-bold text-purple-900">{userGeneratedTemplates.length}</p>
+                  </div>
+                  <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                    <Sparkles className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <Progress value={userGeneratedTemplates.length * 10} className="h-2" />
+                  <p className="text-xs text-purple-600 mt-1">AI creativity</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-green-50 to-green-100/50 border-green-200/50 hover:shadow-lg transition-all duration-300 group">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-green-600">Categories</p>
+                    <p className="text-2xl font-bold text-green-900">{templateCategories.length}</p>
+                  </div>
+                  <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                    <Target className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <Progress value={85} className="h-2" />
+                  <p className="text-xs text-green-600 mt-1">Diverse options</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-orange-50 to-orange-100/50 border-orange-200/50 hover:shadow-lg transition-all duration-300 group">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-orange-600">Downloads</p>
+                    <p className="text-2xl font-bold text-orange-900">
+                      {combinedTemplates.reduce((sum, template) => sum + template.downloads, 0)}
+                    </p>
+                  </div>
+                  <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                    <Download className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <Progress value={60} className="h-2" />
+                  <p className="text-xs text-orange-600 mt-1">Popular choice</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Templates</CardTitle>
-              <Code className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{allTemplates.length}</div>
-              <p className="text-xs text-muted-foreground">
-                <TrendingUp className="w-3 h-3 inline mr-1" />
-                +12% from last month
-              </p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Your Downloads</CardTitle>
-              <Download className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">24</div>
-              <p className="text-xs text-muted-foreground">This month</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Favorites</CardTitle>
-              <Heart className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">8</div>
-              <p className="text-xs text-muted-foreground">Saved templates</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Recent Activity</CardTitle>
-              <Clock className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">12</div>
-              <p className="text-xs text-muted-foreground">Last 7 days</p>
-            </CardContent>
-          </Card>
-        </div>
 
         {/* Main Content */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <div className="flex items-center justify-between mb-6">
-            <TabsList className="grid w-full max-w-lg grid-cols-4">
-              <TabsTrigger value="dashboards" className="flex items-center gap-2">
+          <div className="flex items-center justify-between mb-8">
+            <TabsList className="grid w-full max-w-2xl grid-cols-4 bg-slate-100/50 p-1 rounded-xl">
+              <TabsTrigger 
+                value="dashboards" 
+                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200"
+              >
                 <BarChart3 className="w-4 h-4" />
-                Dashboards
+                <span className="hidden sm:inline">Dashboards</span>
               </TabsTrigger>
-              <TabsTrigger value="landing" className="flex items-center gap-2">
+              <TabsTrigger 
+                value="landing" 
+                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200"
+              >
                 <Globe className="w-4 h-4" />
-                Landing Pages
+                <span className="hidden sm:inline">Landing Pages</span>
               </TabsTrigger>
-              <TabsTrigger value="auth" className="flex items-center gap-2">
+              <TabsTrigger 
+                value="auth" 
+                className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200"
+              >
                 <Shield className="w-4 h-4" />
-                Auth Systems
+                <span className="hidden sm:inline">Auth Systems</span>
               </TabsTrigger>
-              <TabsTrigger value="ai-generator" className="flex items-center gap-2">
+              <TabsTrigger 
+                value="ai-generator" 
+                className="flex items-center gap-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:text-white transition-all duration-200"
+              >
                 <Wand2 className="w-4 h-4" />
-                AI Generator
+                <span className="hidden sm:inline">AI Generator</span>
               </TabsTrigger>
             </TabsList>
             
@@ -476,54 +553,59 @@ export default function ${template.name.replace(/\s+/g, '')}() {
           <TabsContent value="dashboards" className="space-y-6">
             <div className={viewMode === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" : "space-y-4"}>
               {sortedTemplates.filter(template => template.type === "dashboard").map((template, index) => (
-                <Card key={index} className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
-                  <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200">
+                <Card key={index} className="group hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden border-0 bg-white/80 backdrop-blur-sm">
+                  <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden">
                     <Image
                       src={template.preview}
                       alt={`${template.name} Preview`}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent group-hover:from-black/40 transition-all duration-500" />
                     <div className="absolute top-4 right-4 flex gap-2">
-                      <Button size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Button size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-red-50 hover:text-red-600 backdrop-blur-sm">
                         <Heart className="w-4 h-4" />
                       </Button>
-                      <Button size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Button size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-50 hover:text-blue-600 backdrop-blur-sm">
                         <Play className="w-4 h-4" />
                       </Button>
                     </div>
                     <div className="absolute bottom-4 left-4 flex gap-2">
-                      <Badge className={getTemplateTypeColor(template.type)}>
+                      <Badge className={`${getTemplateTypeColor(template.type)} backdrop-blur-sm shadow-lg`}>
                         {getTemplateTypeIcon(template.type)}
                         <span className="ml-1 capitalize">{template.type}</span>
                       </Badge>
                       {template.isAIGenerated && (
-                        <Badge className="bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 border-purple-200">
+                        <Badge className="bg-gradient-to-r from-purple-500/90 to-pink-500/90 text-white border-0 backdrop-blur-sm shadow-lg">
                           <Sparkles className="w-3 h-3 mr-1" />
                           AI Generated
                         </Badge>
                       )}
                     </div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/10 group-hover:to-pink-500/10 transition-all duration-500"></div>
                   </div>
-                  <CardContent className="p-6">
-                    <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <h3 className="font-semibold text-lg mb-1">{template.name}</h3>
-                        <p className="text-sm text-muted-foreground flex items-center gap-1">
+                  <CardContent className="p-6 bg-gradient-to-br from-white/90 to-slate-50/90 backdrop-blur-sm">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex-1">
+                        <h3 className="font-bold text-lg mb-2 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+                          {template.name}
+                        </h3>
+                        <p className="text-sm text-slate-600 flex items-center gap-2">
                           <span className="text-lg">{template.categoryIcon}</span>
-                          {template.category}
+                          <span className="font-medium">{template.category}</span>
                           {template.industry && (
                             <>
-                              <span className="mx-1">•</span>
-                              <span className="text-blue-600 font-medium">{template.industry}</span>
+                              <span className="mx-1 text-slate-400">•</span>
+                              <span className="text-blue-600 font-semibold bg-blue-50 px-2 py-1 rounded-full text-xs">
+                                {template.industry}
+                              </span>
                             </>
                           )}
                         </p>
                       </div>
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-full">
                         <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        <span className="text-sm font-medium">{template.rating}</span>
+                        <span className="text-sm font-semibold text-yellow-700">{template.rating}</span>
                       </div>
                     </div>
                     
