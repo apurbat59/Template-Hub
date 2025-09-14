@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import ErrorBoundary from "@/components/error-boundary"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -318,7 +319,8 @@ export default function ${template.name.replace(/\s+/g, '')}() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30">
+    <ErrorBoundary>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30">
       {/* Header */}
       <header className="border-b border-slate-200/60 bg-white/80 backdrop-blur-xl sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -917,6 +919,7 @@ export default function ${template.name.replace(/\s+/g, '')}() {
           </div>
         </div>
       )}
-    </div>
+      </div>
+    </ErrorBoundary>
   )
 }
