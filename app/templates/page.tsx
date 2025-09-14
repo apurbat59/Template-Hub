@@ -308,8 +308,8 @@ export default function TemplatesPage() {
             <Link href="/templates" className="text-foreground font-medium">
               Templates
             </Link>
-            <Link href="/ai-generator" className="text-muted-foreground hover:text-foreground transition-colors">
-              AI Generator
+            <Link href="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors">
+              Dashboard
             </Link>
             <Link href="/showcase" className="text-muted-foreground hover:text-foreground transition-colors">
               Showcase

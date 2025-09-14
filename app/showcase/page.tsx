@@ -242,8 +242,8 @@ export default function TemplatShowcase() {
             <Link href="/templates" className="text-muted-foreground hover:text-foreground transition-colors">
               Templates
             </Link>
-            <Link href="/ai-generator" className="text-muted-foreground hover:text-foreground transition-colors">
-              AI Generator
+            <Link href="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors">
+              Dashboard
             </Link>
             <Button variant="outline" size="sm">
               Sign In
