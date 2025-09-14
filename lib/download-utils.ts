@@ -11,6 +11,40 @@ export interface Template {
   dependencies?: string[];
 }
 
+// Mock templates data for demonstration
+export const mockTemplates: Record<string, Template> = {
+  'healthcare-dashboard': {
+    id: 'healthcare-dashboard',
+    name: 'Healthcare Dashboard',
+    type: 'dashboard',
+    industry: 'healthcare',
+    description: 'Modern healthcare dashboard with patient management',
+    preview: '/placeholder-dashboard.jpg',
+    code: '// Healthcare Dashboard code',
+    dependencies: ['react', 'next', 'typescript', 'tailwindcss', 'lucide-react']
+  },
+  'ecommerce-landing': {
+    id: 'ecommerce-landing',
+    name: 'E-commerce Landing Page',
+    type: 'landing',
+    industry: 'ecommerce',
+    description: 'Modern e-commerce landing page with product showcase',
+    preview: '/placeholder-dashboard.jpg',
+    code: '// E-commerce Landing Page code',
+    dependencies: ['react', 'next', 'typescript', 'tailwindcss', 'lucide-react']
+  },
+  'gaming-auth': {
+    id: 'gaming-auth',
+    name: 'Gaming Authentication',
+    type: 'auth',
+    industry: 'gaming',
+    description: 'Modern gaming authentication system',
+    preview: '/placeholder-dashboard.jpg',
+    code: '// Gaming Auth code',
+    dependencies: ['react', 'next', 'typescript', 'tailwindcss', 'lucide-react']
+  }
+};
+
 // Generate code based on template type and name
 function generateTemplateCode(templateName: string, templateType: string, industry: string): string {
   const baseName = templateName.replace(/\s+/g, '');

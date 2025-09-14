@@ -37,6 +37,7 @@ import {
 import Link from "next/link"
 import Image from "next/image"
 import { downloadTemplate, copyToClipboard, mockTemplates } from "@/lib/download-utils"
+import { CodePreview } from "@/components/ui/code-preview"
 
 export default function DashboardPage() {
   const [user, setUser] = useState({ name: "", email: "", type: "" })
@@ -61,6 +62,20 @@ export default function DashboardPage() {
       email: getCookie("userEmail") || "user@example.com",
       type: getCookie("userType") || "user"
     })
+  }, [])
+
+  // Listen for download events from preview modal
+  useEffect(() => {
+    const handleDownloadFromPreview = (event: CustomEvent) => {
+      const template = event.detail
+      handleDownload(template)
+    }
+
+    window.addEventListener('downloadTemplate', handleDownloadFromPreview as EventListener)
+    
+    return () => {
+      window.removeEventListener('downloadTemplate', handleDownloadFromPreview as EventListener)
+    }
   }, [])
 
   const handleLogout = () => {
@@ -215,17 +230,16 @@ export default function DashboardPage() {
     setDownloadStatus(prev => ({ ...prev, [templateKey]: "downloading" }))
     
     try {
-      // Get mock template data
-      const mockTemplate = mockTemplates[templateKey] || {
+      // Create template object for download
+      const templateForDownload = {
         name: template.name,
         type: template.type,
-        category: template.category,
-        code: `// ${template.name} Component\nimport React from 'react'\n\nexport default function ${template.name.replace(/\s+/g, '')}() {\n  return (\n    <div className="min-h-screen bg-gray-50">\n      <h1 className="text-2xl font-bold p-8">${template.name}</h1>\n      <p className="px-8">This is a ${template.type} template for ${template.category}.</p>\n    </div>\n  )\n}`,
-        dependencies: ['react', 'next'],
-        description: template.description || `A ${template.type} template for ${template.category}`
+        industry: template.category || 'general',
+        description: template.description || `A ${template.type} template for ${template.category}`,
+        preview: template.preview || '/placeholder-dashboard.jpg'
       }
       
-      downloadTemplate(mockTemplate)
+      await downloadTemplate(templateForDownload)
       setDownloadStatus(prev => ({ ...prev, [templateKey]: "downloaded" }))
       
       // Reset status after 3 seconds
@@ -240,16 +254,31 @@ export default function DashboardPage() {
 
   const handleCopyCode = async (template: any) => {
     const templateKey = `${template.categorySlug}-${template.type}`
-    const mockTemplate = mockTemplates[templateKey] || {
-      code: `// ${template.name} Component\nimport React from 'react'\n\nexport default function ${template.name.replace(/\s+/g, '')}() {\n  return (\n    <div className="min-h-screen bg-gray-50">\n      <h1 className="text-2xl font-bold p-8">${template.name}</h1>\n      <p className="px-8">This is a ${template.type} template for ${template.category}.</p>\n    </div>\n  )\n}`
-    }
     
-    const success = await copyToClipboard(mockTemplate.code)
-    if (success) {
+    try {
+      // Generate a simple code snippet for copying
+      const codeSnippet = `// ${template.name} Component
+import React from 'react'
+
+export default function ${template.name.replace(/\s+/g, '')}() {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <h1 className="text-2xl font-bold p-8">${template.name}</h1>
+      <p className="px-8">This is a ${template.type} template for ${template.category}.</p>
+    </div>
+  )
+}`
+      
+      await copyToClipboard(codeSnippet)
       setDownloadStatus(prev => ({ ...prev, [templateKey]: "copied" }))
+      
+      // Reset status after 3 seconds
       setTimeout(() => {
         setDownloadStatus(prev => ({ ...prev, [templateKey]: "" }))
-      }, 2000)
+      }, 3000)
+    } catch (error) {
+      console.error('Copy failed:', error)
+      setDownloadStatus(prev => ({ ...prev, [templateKey]: "error" }))
     }
   }
 
@@ -469,6 +498,11 @@ export default function DashboardPage() {
                           View Demo
                         </Button>
                       </Link>
+                      <CodePreview template={template}>
+                        <Button size="sm" variant="outline">
+                          <Eye className="w-4 h-4" />
+                        </Button>
+                      </CodePreview>
                       <Button 
                         size="sm" 
                         variant="outline"
@@ -545,6 +579,11 @@ export default function DashboardPage() {
                           View Demo
                         </Button>
                       </Link>
+                      <CodePreview template={template}>
+                        <Button size="sm" variant="outline">
+                          <Eye className="w-4 h-4" />
+                        </Button>
+                      </CodePreview>
                       <Button 
                         size="sm" 
                         variant="outline"
@@ -621,6 +660,11 @@ export default function DashboardPage() {
                           View Demo
                         </Button>
                       </Link>
+                      <CodePreview template={template}>
+                        <Button size="sm" variant="outline">
+                          <Eye className="w-4 h-4" />
+                        </Button>
+                      </CodePreview>
                       <Button 
                         size="sm" 
                         variant="outline"
