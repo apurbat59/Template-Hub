@@ -38,6 +38,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { downloadTemplate, copyToClipboard, mockTemplates } from "@/lib/download-utils"
 import { CodePreview } from "@/components/ui/code-preview"
+import AIGenerator from "@/components/ai-generator"
 
 export default function DashboardPage() {
   const [user, setUser] = useState({ name: "", email: "", type: "" })
@@ -47,6 +48,8 @@ export default function DashboardPage() {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc")
   const [activeTab, setActiveTab] = useState("dashboards")
   const [downloadStatus, setDownloadStatus] = useState<Record<string, string>>({})
+  const [userGeneratedTemplates, setUserGeneratedTemplates] = useState<any[]>([])
+  const [showAIGenerator, setShowAIGenerator] = useState(false)
 
   // Get user data from cookies
   useEffect(() => {
@@ -63,6 +66,22 @@ export default function DashboardPage() {
       type: getCookie("userType") || "user"
     })
   }, [])
+
+  // Load user-generated templates from localStorage
+  useEffect(() => {
+    const savedTemplates = localStorage.getItem('userGeneratedTemplates')
+    if (savedTemplates) {
+      setUserGeneratedTemplates(JSON.parse(savedTemplates))
+    }
+  }, [])
+
+  // Handle AI-generated templates
+  const handleTemplateGenerated = (template: any) => {
+    const newTemplates = [...userGeneratedTemplates, template]
+    setUserGeneratedTemplates(newTemplates)
+    localStorage.setItem('userGeneratedTemplates', JSON.stringify(newTemplates))
+    setShowAIGenerator(false)
+  }
 
   // Listen for download events from preview modal
   useEffect(() => {
@@ -182,13 +201,18 @@ export default function DashboardPage() {
       category: category.name,
       categorySlug: category.slug,
       categoryIcon: category.icon,
-      categoryColor: category.color
+      categoryColor: category.color,
+      isAIGenerated: false
     }))
   )
 
-  const filteredTemplates = allTemplates.filter(template => 
+  // Combine regular templates with user-generated templates
+  const combinedTemplates = [...allTemplates, ...userGeneratedTemplates]
+
+  const filteredTemplates = combinedTemplates.filter(template => 
     template.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    template.category.toLowerCase().includes(searchQuery.toLowerCase())
+    template.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    (template.industry && template.industry.toLowerCase().includes(searchQuery.toLowerCase()))
   )
 
   const sortedTemplates = [...filteredTemplates].sort((a, b) => {
@@ -401,7 +425,7 @@ export default function ${template.name.replace(/\s+/g, '')}() {
         {/* Main Content */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <div className="flex items-center justify-between mb-6">
-            <TabsList className="grid w-full max-w-md grid-cols-3">
+            <TabsList className="grid w-full max-w-lg grid-cols-4">
               <TabsTrigger value="dashboards" className="flex items-center gap-2">
                 <BarChart3 className="w-4 h-4" />
                 Dashboards
@@ -413,6 +437,10 @@ export default function ${template.name.replace(/\s+/g, '')}() {
               <TabsTrigger value="auth" className="flex items-center gap-2">
                 <Shield className="w-4 h-4" />
                 Auth Systems
+              </TabsTrigger>
+              <TabsTrigger value="ai-generator" className="flex items-center gap-2">
+                <Wand2 className="w-4 h-4" />
+                AI Generator
               </TabsTrigger>
             </TabsList>
             
@@ -464,11 +492,17 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                         <Play className="w-4 h-4" />
                       </Button>
                     </div>
-                    <div className="absolute bottom-4 left-4">
+                    <div className="absolute bottom-4 left-4 flex gap-2">
                       <Badge className={getTemplateTypeColor(template.type)}>
                         {getTemplateTypeIcon(template.type)}
                         <span className="ml-1 capitalize">{template.type}</span>
                       </Badge>
+                      {template.isAIGenerated && (
+                        <Badge className="bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 border-purple-200">
+                          <Sparkles className="w-3 h-3 mr-1" />
+                          AI Generated
+                        </Badge>
+                      )}
                     </div>
                   </div>
                   <CardContent className="p-6">
@@ -478,6 +512,12 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                         <p className="text-sm text-muted-foreground flex items-center gap-1">
                           <span className="text-lg">{template.categoryIcon}</span>
                           {template.category}
+                          {template.industry && (
+                            <>
+                              <span className="mx-1">•</span>
+                              <span className="text-blue-600 font-medium">{template.industry}</span>
+                            </>
+                          )}
                         </p>
                       </div>
                       <div className="flex items-center gap-1">
@@ -545,11 +585,17 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                         <Play className="w-4 h-4" />
                       </Button>
                     </div>
-                    <div className="absolute bottom-4 left-4">
+                    <div className="absolute bottom-4 left-4 flex gap-2">
                       <Badge className={getTemplateTypeColor(template.type)}>
                         {getTemplateTypeIcon(template.type)}
                         <span className="ml-1 capitalize">{template.type}</span>
                       </Badge>
+                      {template.isAIGenerated && (
+                        <Badge className="bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 border-purple-200">
+                          <Sparkles className="w-3 h-3 mr-1" />
+                          AI Generated
+                        </Badge>
+                      )}
                     </div>
                   </div>
                   <CardContent className="p-6">
@@ -559,6 +605,12 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                         <p className="text-sm text-muted-foreground flex items-center gap-1">
                           <span className="text-lg">{template.categoryIcon}</span>
                           {template.category}
+                          {template.industry && (
+                            <>
+                              <span className="mx-1">•</span>
+                              <span className="text-blue-600 font-medium">{template.industry}</span>
+                            </>
+                          )}
                         </p>
                       </div>
                       <div className="flex items-center gap-1">
@@ -626,11 +678,17 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                         <Play className="w-4 h-4" />
                       </Button>
                     </div>
-                    <div className="absolute bottom-4 left-4">
+                    <div className="absolute bottom-4 left-4 flex gap-2">
                       <Badge className={getTemplateTypeColor(template.type)}>
                         {getTemplateTypeIcon(template.type)}
                         <span className="ml-1 capitalize">{template.type}</span>
                       </Badge>
+                      {template.isAIGenerated && (
+                        <Badge className="bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 border-purple-200">
+                          <Sparkles className="w-3 h-3 mr-1" />
+                          AI Generated
+                        </Badge>
+                      )}
                     </div>
                   </div>
                   <CardContent className="p-6">
@@ -640,6 +698,12 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                         <p className="text-sm text-muted-foreground flex items-center gap-1">
                           <span className="text-lg">{template.categoryIcon}</span>
                           {template.category}
+                          {template.industry && (
+                            <>
+                              <span className="mx-1">•</span>
+                              <span className="text-blue-600 font-medium">{template.industry}</span>
+                            </>
+                          )}
                         </p>
                       </div>
                       <div className="flex items-center gap-1">
@@ -685,6 +749,10 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                 </Card>
               ))}
             </div>
+          </TabsContent>
+
+          <TabsContent value="ai-generator" className="space-y-6">
+            <AIGenerator onTemplateGenerated={handleTemplateGenerated} />
           </TabsContent>
         </Tabs>
       </div>

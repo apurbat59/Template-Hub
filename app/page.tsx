@@ -109,9 +109,6 @@ export default function HomePage() {
             <a href="#dashboard" className="text-muted-foreground hover:text-foreground transition-colors">
               Dashboard
             </a>
-            <Link href="/ai-generator" className="text-muted-foreground hover:text-foreground transition-colors">
-              AI Generator
-            </Link>
             <Link href="/auth">
               <Button variant="outline" size="sm">
                 Sign In
@@ -691,10 +688,10 @@ export default function HomePage() {
                   <span className="text-foreground">Customizable and extensible architecture</span>
                 </div>
               </div>
-              <Link href="/ai-generator">
+              <Link href="/auth">
                 <Button size="lg" variant="secondary">
                   <Sparkles className="w-5 h-5 mr-2" />
-                  Try AI Generator
+                  Access Dashboard
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
@@ -786,8 +783,8 @@ export default function HomePage() {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    AI Generator
+                  <a href="#dashboard" className="hover:text-foreground transition-colors">
+                    Dashboard
                   </a>
                 </li>
                 <li>
