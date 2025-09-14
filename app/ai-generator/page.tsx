@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   Sparkles,
@@ -19,6 +20,7 @@ import {
   Download,
   Copy,
   Eye,
+  X,
   Loader2,
   CheckCircle,
   AlertCircle,
@@ -39,6 +41,8 @@ export default function AIGeneratorPage() {
   const [generatedCode, setGeneratedCode] = useState("")
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
+  const [showPreview, setShowPreview] = useState(false)
+  const [copyStatus, setCopyStatus] = useState("")
 
   const templateTypes = [
     { value: "dashboard", label: "Dashboard", icon: <BarChart3 className="w-4 h-4" />, description: "Data visualization and analytics" },
@@ -105,9 +109,27 @@ export default function AIGeneratorPage() {
     }
   }
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(generatedCode)
-    setSuccess("Code copied to clipboard!")
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(generatedCode)
+      setCopyStatus("copied")
+      setSuccess("Code copied to clipboard!")
+      setTimeout(() => setCopyStatus(""), 2000)
+    } catch (err) {
+      setError("Failed to copy code")
+    }
+  }
+
+  const downloadCode = () => {
+    const blob = new Blob([generatedCode], { type: 'text/plain' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `${templateType}-${industry || 'template'}.tsx`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
   }
 
   return (
@@ -289,29 +311,85 @@ export default function AIGeneratorPage() {
                     <div className="flex gap-2">
                       <Button size="sm" variant="outline" onClick={copyToClipboard}>
                         <Copy className="w-4 h-4 mr-1" />
-                        Copy
+                        {copyStatus === "copied" ? "Copied!" : "Copy"}
                       </Button>
-                      <Button size="sm" variant="outline">
+                      <Button size="sm" variant="outline" onClick={downloadCode}>
                         <Download className="w-4 h-4 mr-1" />
                         Download
                       </Button>
                     </div>
                   </div>
                   
-                  <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                    <pre className="text-green-400 text-sm">
+                  <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto relative">
+                    <div className="absolute top-2 right-2">
+                      <Dialog open={showPreview} onOpenChange={setShowPreview}>
+                        <DialogTrigger asChild>
+                          <Button size="sm" variant="secondary" className="h-8">
+                            <Eye className="w-3 h-3 mr-1" />
+                            Preview
+                          </Button>
+                        </DialogTrigger>
+                      </Dialog>
+                    </div>
+                    <pre className="text-green-400 text-sm pr-20">
                       <code>{generatedCode}</code>
                     </pre>
                   </div>
                   
                   <div className="flex gap-2">
-                    <Button className="flex-1">
-                      <Eye className="w-4 h-4 mr-2" />
-                      Preview Live
-                    </Button>
-                    <Button variant="outline" className="flex-1">
-                      <Settings className="w-4 h-4 mr-2" />
-                      Customize
+                    <Dialog open={showPreview} onOpenChange={setShowPreview}>
+                      <DialogTrigger asChild>
+                        <Button className="flex-1">
+                          <Eye className="w-4 h-4 mr-2" />
+                          Preview Code
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[80vh]">
+                        <DialogHeader>
+                          <DialogTitle className="flex items-center gap-2">
+                            <Code className="w-5 h-5" />
+                            Generated Code Preview
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <Badge variant="secondary">
+                              {templateType === "dashboard" && <BarChart3 className="w-3 h-3 mr-1" />}
+                              {templateType === "landing" && <Globe className="w-3 h-3 mr-1" />}
+                              {templateType === "auth" && <Shield className="w-3 h-3 mr-1" />}
+                              {templateType.charAt(0).toUpperCase() + templateType.slice(1)} Template
+                              {industry && ` • ${industry}`}
+                            </Badge>
+                            <div className="flex gap-2">
+                              <Button size="sm" variant="outline" onClick={copyToClipboard}>
+                                <Copy className="w-4 h-4 mr-1" />
+                                {copyStatus === "copied" ? "Copied!" : "Copy"}
+                              </Button>
+                              <Button size="sm" variant="outline" onClick={downloadCode}>
+                                <Download className="w-4 h-4 mr-1" />
+                                Download
+                              </Button>
+                            </div>
+                          </div>
+                          
+                          <div className="bg-gray-900 rounded-lg p-4 overflow-auto max-h-96">
+                            <pre className="text-green-400 text-sm whitespace-pre-wrap">
+                              <code>{generatedCode}</code>
+                            </pre>
+                          </div>
+                          
+                          <div className="text-sm text-muted-foreground">
+                            <p><strong>Template Type:</strong> {templateType.charAt(0).toUpperCase() + templateType.slice(1)}</p>
+                            {industry && <p><strong>Industry:</strong> {industry}</p>}
+                            {features.length > 0 && <p><strong>Features:</strong> {features.join(", ")}</p>}
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                    
+                    <Button variant="outline" className="flex-1" onClick={() => setGeneratedCode("")}>
+                      <X className="w-4 h-4 mr-2" />
+                      Clear
                     </Button>
                   </div>
                 </div>
