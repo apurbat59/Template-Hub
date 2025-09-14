@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -134,10 +134,10 @@ export default function AIGeneratorPage() {
     URL.revokeObjectURL(url)
   }
 
-  const createPreviewHTML = () => {
+  const previewHTML = useMemo(() => {
+    if (!generatedCode) return null
+    
     try {
-      setPreviewError("")
-      
       // Create a simple HTML preview by converting JSX to basic HTML
       let htmlCode = generatedCode
         .replace(/import.*from.*['"][^'"]*['"];?\s*/g, '') // Remove imports
@@ -182,13 +182,19 @@ export default function AIGeneratorPage() {
       
       return null
     } catch (err) {
-      setPreviewError("Failed to create preview. The generated code may have syntax errors.")
       console.error('Preview error:', err)
       return null
     }
-  }
+  }, [generatedCode])
 
-  const previewHTML = createPreviewHTML()
+  // Handle preview errors separately
+  useEffect(() => {
+    if (generatedCode && !previewHTML) {
+      setPreviewError("Failed to create preview. The generated code may have syntax errors.")
+    } else {
+      setPreviewError("")
+    }
+  }, [generatedCode, previewHTML])
 
   return (
     <div className="min-h-screen bg-background">
