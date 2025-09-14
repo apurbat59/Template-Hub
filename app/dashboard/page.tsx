@@ -488,6 +488,34 @@ export default function ${template.name.replace(/\s+/g, '')}() {
         </div>
 
 
+        {/* AI Generator Highlight */}
+        {activeTab !== "ai-generator" && (
+          <div className="mb-6 p-4 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-purple-500/10 rounded-xl border border-purple-200/50 backdrop-blur-sm">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+                  <Wand2 className="w-6 h-6 text-white animate-pulse" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    ✨ AI Generator Available!
+                  </h3>
+                  <p className="text-sm text-slate-600">
+                    Create custom templates with AI in seconds
+                  </p>
+                </div>
+              </div>
+              <Button 
+                onClick={() => setActiveTab("ai-generator")}
+                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+              >
+                <Sparkles className="w-4 h-4 mr-2 animate-spin" />
+                Try AI Generator
+              </Button>
+            </div>
+          </div>
+        )}
+
         {/* Main Content */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <div className="flex items-center justify-between mb-8">
@@ -515,10 +543,15 @@ export default function ${template.name.replace(/\s+/g, '')}() {
               </TabsTrigger>
               <TabsTrigger 
                 value="ai-generator" 
-                className="flex items-center gap-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:text-white transition-all duration-200"
+                className="relative flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-pink-600 data-[state=active]:shadow-2xl data-[state=active]:scale-105"
               >
-                <Wand2 className="w-4 h-4" />
-                <span className="hidden sm:inline">AI Generator</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg opacity-75 animate-pulse"></div>
+                <div className="relative flex items-center gap-2">
+                  <Wand2 className="w-4 h-4 animate-pulse" />
+                  <span className="hidden sm:inline font-semibold">AI Generator</span>
+                  <Sparkles className="w-3 h-3 animate-spin" />
+                </div>
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-bounce"></div>
               </TabsTrigger>
             </TabsList>
             
@@ -835,10 +868,55 @@ export default function ${template.name.replace(/\s+/g, '')}() {
           </TabsContent>
 
           <TabsContent value="ai-generator" className="space-y-6">
-            <AIGenerator onTemplateGenerated={handleTemplateGenerated} />
+            <div className="relative">
+              {/* Special AI Generator Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-pink-500/5 to-purple-500/5 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-transparent to-pink-500/10 rounded-2xl animate-pulse"></div>
+              
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="text-center mb-8 p-6">
+                  <div className="inline-flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+                      <Wand2 className="w-7 h-7 text-white animate-pulse" />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                        AI Template Generator
+                      </h2>
+                      <p className="text-slate-600">Powered by Gemini AI</p>
+                    </div>
+                    <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg">
+                      <Sparkles className="w-7 h-7 text-white animate-spin" />
+                    </div>
+                  </div>
+                  <p className="text-slate-600 max-w-2xl mx-auto">
+                    Create stunning, production-ready templates in seconds. Just describe what you need and our AI will generate the perfect code for you!
+                  </p>
+                </div>
+                
+                <AIGenerator onTemplateGenerated={handleTemplateGenerated} />
+              </div>
+            </div>
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Floating AI Generator Button */}
+      {activeTab !== "ai-generator" && (
+        <div className="fixed bottom-6 right-6 z-50">
+          <Button
+            onClick={() => setActiveTab("ai-generator")}
+            size="lg"
+            className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 animate-pulse"
+          >
+            <Wand2 className="w-8 h-8" />
+          </Button>
+          <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center animate-bounce">
+            <Sparkles className="w-4 h-4 text-white" />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
