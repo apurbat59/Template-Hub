@@ -42,7 +42,9 @@ export default function AIGeneratorPage() {
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
   const [showPreview, setShowPreview] = useState(false)
+  const [showLivePreview, setShowLivePreview] = useState(false)
   const [copyStatus, setCopyStatus] = useState("")
+  const [previewError, setPreviewError] = useState("")
 
   const templateTypes = [
     { value: "dashboard", label: "Dashboard", icon: <BarChart3 className="w-4 h-4" />, description: "Data visualization and analytics" },
@@ -131,6 +133,62 @@ export default function AIGeneratorPage() {
     document.body.removeChild(a)
     URL.revokeObjectURL(url)
   }
+
+  const createPreviewHTML = () => {
+    try {
+      setPreviewError("")
+      
+      // Create a simple HTML preview by converting JSX to basic HTML
+      let htmlCode = generatedCode
+        .replace(/import.*from.*['"][^'"]*['"];?\s*/g, '') // Remove imports
+        .replace(/export\s+default\s+function\s+(\w+)/, 'function PreviewComponent') // Rename function
+        .replace(/export\s+default\s+PreviewComponent/, '') // Remove export
+        .replace(/className=/g, 'class=') // Convert className to class
+        .replace(/<(\w+)\s+class="([^"]*)"\s*>/g, '<$1 class="$2">') // Fix class attributes
+        .replace(/<(\w+)\s+class="([^"]*)"\s*\/>/g, '<$1 class="$2" />') // Fix self-closing tags
+      
+      // Extract the JSX content and convert to basic HTML
+      const jsxMatch = htmlCode.match(/return\s*\(\s*([\s\S]*?)\s*\)\s*;?\s*$/)
+      if (jsxMatch) {
+        let jsxContent = jsxMatch[1]
+        
+        // Convert JSX to basic HTML
+        jsxContent = jsxContent
+          .replace(/\{([^}]+)\}/g, '$1') // Remove JSX expressions for preview
+          .replace(/className="([^"]*)"/g, 'class="$1"')
+          .replace(/<(\w+)\s+class="([^"]*)"\s*\/>/g, '<$1 class="$2" />')
+        
+        return `
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Template Preview</title>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <style>
+              body { margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+              .preview-container { min-height: 100vh; }
+            </style>
+          </head>
+          <body>
+            <div class="preview-container">
+              ${jsxContent}
+            </div>
+          </body>
+          </html>
+        `
+      }
+      
+      return null
+    } catch (err) {
+      setPreviewError("Failed to create preview. The generated code may have syntax errors.")
+      console.error('Preview error:', err)
+      return null
+    }
+  }
+
+  const previewHTML = createPreviewHTML()
 
   return (
     <div className="min-h-screen bg-background">
@@ -321,12 +379,21 @@ export default function AIGeneratorPage() {
                   </div>
                   
                   <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto relative">
-                    <div className="absolute top-2 right-2">
+                    <div className="absolute top-2 right-2 flex gap-2">
                       <Dialog open={showPreview} onOpenChange={setShowPreview}>
                         <DialogTrigger asChild>
                           <Button size="sm" variant="secondary" className="h-8">
+                            <Code className="w-3 h-3 mr-1" />
+                            Code
+                          </Button>
+                        </DialogTrigger>
+                      </Dialog>
+                      
+                      <Dialog open={showLivePreview} onOpenChange={setShowLivePreview}>
+                        <DialogTrigger asChild>
+                          <Button size="sm" variant="default" className="h-8">
                             <Eye className="w-3 h-3 mr-1" />
-                            Preview
+                            Live
                           </Button>
                         </DialogTrigger>
                       </Dialog>
@@ -337,18 +404,63 @@ export default function AIGeneratorPage() {
                   </div>
                   
                   <div className="flex gap-2">
-                    <Dialog open={showPreview} onOpenChange={setShowPreview}>
+                    <Dialog open={showLivePreview} onOpenChange={setShowLivePreview}>
                       <DialogTrigger asChild>
                         <Button className="flex-1">
                           <Eye className="w-4 h-4 mr-2" />
-                          Preview Code
+                          Live Preview
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-6xl max-h-[90vh] p-0">
+                        <DialogHeader className="p-6 pb-0">
+                          <DialogTitle className="flex items-center gap-2">
+                            <Eye className="w-5 h-5" />
+                            Live Preview - {templateType.charAt(0).toUpperCase() + templateType.slice(1)} Template
+                            {industry && ` • ${industry}`}
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="flex-1 overflow-hidden">
+                          {previewError ? (
+                            <div className="p-6 text-center">
+                              <Alert className="mb-4">
+                                <AlertCircle className="h-4 w-4" />
+                                <AlertDescription>{previewError}</AlertDescription>
+                              </Alert>
+                              <Button variant="outline" onClick={() => setShowLivePreview(false)}>
+                                Close
+                              </Button>
+                            </div>
+                          ) : previewHTML ? (
+                            <div className="h-[70vh] border-t">
+                              <iframe
+                                srcDoc={previewHTML}
+                                className="w-full h-full border-0"
+                                title="Template Preview"
+                                sandbox="allow-scripts allow-same-origin"
+                              />
+                            </div>
+                          ) : (
+                            <div className="p-6 text-center text-muted-foreground">
+                              <Loader2 className="w-8 h-8 mx-auto mb-2 animate-spin" />
+                              <p>Generating preview...</p>
+                            </div>
+                          )}
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                    
+                    <Dialog open={showPreview} onOpenChange={setShowPreview}>
+                      <DialogTrigger asChild>
+                        <Button variant="outline" className="flex-1">
+                          <Code className="w-4 h-4 mr-2" />
+                          View Code
                         </Button>
                       </DialogTrigger>
                       <DialogContent className="max-w-4xl max-h-[80vh]">
                         <DialogHeader>
                           <DialogTitle className="flex items-center gap-2">
                             <Code className="w-5 h-5" />
-                            Generated Code Preview
+                            Generated Code
                           </DialogTitle>
                         </DialogHeader>
                         <div className="space-y-4">
@@ -387,7 +499,7 @@ export default function AIGeneratorPage() {
                       </DialogContent>
                     </Dialog>
                     
-                    <Button variant="outline" className="flex-1" onClick={() => setGeneratedCode("")}>
+                    <Button variant="outline" onClick={() => setGeneratedCode("")}>
                       <X className="w-4 h-4 mr-2" />
                       Clear
                     </Button>
