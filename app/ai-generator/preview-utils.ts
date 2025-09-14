@@ -3,7 +3,173 @@
 export function generatePreviewHTML(templateType: string, industry: string = 'general'): string {
   let previewContent = ''
   
-  if (templateType === 'dashboard') {
+  if (templateType === 'landing' && industry === 'entertainment') {
+    previewContent = `
+      <div class="min-h-screen bg-black text-white">
+        <!-- Navigation -->
+        <nav class="flex items-center justify-between px-6 py-4 bg-black/90 backdrop-blur-sm">
+          <div class="flex items-center space-x-8">
+            <div class="text-red-600 text-2xl font-bold">NETFLIX</div>
+            <div class="hidden md:flex space-x-6">
+              <a href="#" class="hover:text-gray-300">Home</a>
+              <a href="#" class="hover:text-gray-300">TV Shows</a>
+              <a href="#" class="hover:text-gray-300">Movies</a>
+              <a href="#" class="hover:text-gray-300">Anime</a>
+              <a href="#" class="hover:text-gray-300">Web Series</a>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="relative">
+              <input type="text" placeholder="Search..." class="bg-gray-800 text-white px-4 py-2 rounded-lg w-64 focus:outline-none focus:ring-2 focus:ring-red-600">
+            </div>
+            <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center">
+              <span class="text-sm font-bold">U</span>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="relative h-96 bg-gradient-to-r from-black via-gray-900 to-black">
+          <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80"></div>
+          <div class="relative z-10 flex items-center h-full px-6">
+            <div class="max-w-2xl">
+              <h1 class="text-5xl font-bold mb-4">Stranger Things</h1>
+              <p class="text-lg mb-6 text-gray-300">When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.</p>
+              <div class="flex space-x-4">
+                <button class="bg-white text-black px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  Play
+                </button>
+                <button class="bg-gray-600/70 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-600/90 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  My List
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Content Rows -->
+        <div class="px-6 py-8 space-y-8">
+          <!-- Trending Now -->
+          <div>
+            <h2 class="text-xl font-semibold mb-4">Trending Now</h2>
+            <div class="flex space-x-4 overflow-x-auto scrollbar-hide">
+              <div class="flex-shrink-0 w-48 bg-gray-800 rounded-lg overflow-hidden hover:scale-105 transition-transform">
+                <div class="h-32 bg-gradient-to-br from-red-500 to-purple-600 flex items-center justify-center">
+                  <span class="text-white font-bold">Movie Poster</span>
+                </div>
+                <div class="p-3">
+                  <h3 class="font-semibold truncate">The Witcher</h3>
+                  <p class="text-sm text-gray-400">Action, Fantasy</p>
+                  <div class="flex items-center mt-1">
+                    <span class="text-yellow-400">★★★★☆</span>
+                    <span class="text-sm text-gray-400 ml-2">4.2</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 w-48 bg-gray-800 rounded-lg overflow-hidden hover:scale-105 transition-transform">
+                <div class="h-32 bg-gradient-to-br from-blue-500 to-green-600 flex items-center justify-center">
+                  <span class="text-white font-bold">Anime Poster</span>
+                </div>
+                <div class="p-3">
+                  <h3 class="font-semibold truncate">Attack on Titan</h3>
+                  <p class="text-sm text-gray-400">Anime, Action</p>
+                  <div class="flex items-center mt-1">
+                    <span class="text-yellow-400">★★★★★</span>
+                    <span class="text-sm text-gray-400 ml-2">4.8</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 w-48 bg-gray-800 rounded-lg overflow-hidden hover:scale-105 transition-transform">
+                <div class="h-32 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                  <span class="text-white font-bold">Series Poster</span>
+                </div>
+                <div class="p-3">
+                  <h3 class="font-semibold truncate">Money Heist</h3>
+                  <p class="text-sm text-gray-400">Thriller, Crime</p>
+                  <div class="flex items-center mt-1">
+                    <span class="text-yellow-400">★★★★☆</span>
+                    <span class="text-sm text-gray-400 ml-2">4.5</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Continue Watching -->
+          <div>
+            <h2 class="text-xl font-semibold mb-4">Continue Watching</h2>
+            <div class="flex space-x-4 overflow-x-auto scrollbar-hide">
+              <div class="flex-shrink-0 w-48 bg-gray-800 rounded-lg overflow-hidden hover:scale-105 transition-transform">
+                <div class="h-32 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                  <span class="text-white font-bold">Web Series</span>
+                </div>
+                <div class="p-3">
+                  <h3 class="font-semibold truncate">The Office</h3>
+                  <p class="text-sm text-gray-400">Comedy, Sitcom</p>
+                  <div class="w-full bg-gray-600 rounded-full h-1 mt-2">
+                    <div class="bg-red-600 h-1 rounded-full" style="width: 65%"></div>
+                  </div>
+                  <p class="text-xs text-gray-400 mt-1">S2 E5 - 25 min left</p>
+                </div>
+              </div>
+              <div class="flex-shrink-0 w-48 bg-gray-800 rounded-lg overflow-hidden hover:scale-105 transition-transform">
+                <div class="h-32 bg-gradient-to-br from-green-500 to-blue-600 flex items-center justify-center">
+                  <span class="text-white font-bold">Movie</span>
+                </div>
+                <div class="p-3">
+                  <h3 class="font-semibold truncate">Inception</h3>
+                  <p class="text-sm text-gray-400">Sci-Fi, Thriller</p>
+                  <div class="w-full bg-gray-600 rounded-full h-1 mt-2">
+                    <div class="bg-red-600 h-1 rounded-full" style="width: 30%"></div>
+                  </div>
+                  <p class="text-xs text-gray-400 mt-1">1h 15min left</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Anime Section -->
+          <div>
+            <h2 class="text-xl font-semibold mb-4">Popular Anime</h2>
+            <div class="flex space-x-4 overflow-x-auto scrollbar-hide">
+              <div class="flex-shrink-0 w-48 bg-gray-800 rounded-lg overflow-hidden hover:scale-105 transition-transform">
+                <div class="h-32 bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
+                  <span class="text-white font-bold">Anime</span>
+                </div>
+                <div class="p-3">
+                  <h3 class="font-semibold truncate">Demon Slayer</h3>
+                  <p class="text-sm text-gray-400">Anime, Action</p>
+                  <div class="flex items-center mt-1">
+                    <span class="text-yellow-400">★★★★★</span>
+                    <span class="text-sm text-gray-400 ml-2">4.9</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 w-48 bg-gray-800 rounded-lg overflow-hidden hover:scale-105 transition-transform">
+                <div class="h-32 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                  <span class="text-white font-bold">Anime</span>
+                </div>
+                <div class="p-3">
+                  <h3 class="font-semibold truncate">One Piece</h3>
+                  <p class="text-sm text-gray-400">Anime, Adventure</p>
+                  <div class="flex items-center mt-1">
+                    <span class="text-yellow-400">★★★★★</span>
+                    <span class="text-sm text-gray-400 ml-2">4.7</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `
+  } else if (templateType === 'dashboard') {
     previewContent = `
       <div class="min-h-screen bg-gray-50 p-6">
         <div class="max-w-7xl mx-auto">
@@ -205,6 +371,8 @@ export function generatePreviewHTML(templateType: string, industry: string = 'ge
       <style>
         body { margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
         .preview-container { min-height: 100vh; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
       </style>
     </head>
     <body>

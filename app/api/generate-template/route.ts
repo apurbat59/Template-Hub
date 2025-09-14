@@ -66,7 +66,17 @@ export async function POST(request: NextRequest) {
 }
 
 function buildEnhancedPrompt(prompt: string, templateType: string, industry: string, features: string[]) {
-  const baseInstructions = `You are an expert React/Next.js developer. Generate a complete, production-ready ${templateType} template based on the user's requirements.
+  // Check if this is an entertainment platform request
+  const isEntertainmentPlatform = prompt.toLowerCase().includes('entertainment') || 
+                                 prompt.toLowerCase().includes('netflix') || 
+                                 prompt.toLowerCase().includes('amazon prime') || 
+                                 prompt.toLowerCase().includes('hotstar') || 
+                                 prompt.toLowerCase().includes('streaming') ||
+                                 prompt.toLowerCase().includes('movies') ||
+                                 prompt.toLowerCase().includes('anime') ||
+                                 prompt.toLowerCase().includes('webseries')
+
+  let baseInstructions = `You are an expert React/Next.js developer. Generate a complete, production-ready ${templateType} template based on the user's requirements.
 
 REQUIREMENTS:
 - Use Next.js 14 with App Router
@@ -84,7 +94,28 @@ TEMPLATE TYPE: ${templateType.toUpperCase()}
 ${industry ? `INDUSTRY: ${industry.toUpperCase()}` : ''}
 ${features.length > 0 ? `FEATURES: ${features.join(', ')}` : ''}
 
-USER REQUEST: ${prompt}
+USER REQUEST: ${prompt}`
+
+  if (isEntertainmentPlatform) {
+    baseInstructions += `
+
+SPECIAL INSTRUCTIONS FOR ENTERTAINMENT PLATFORM:
+- Create a Netflix/Amazon Prime/Hotstar-like interface
+- Include movie/show cards with posters, titles, ratings, and genres
+- Add horizontal scrolling rows for different categories (Trending, New Releases, Anime, Web Series, etc.)
+- Include a hero banner with featured content
+- Add search functionality
+- Include user profiles and watchlists
+- Use dark theme with red/blue accent colors
+- Add play buttons and hover effects
+- Include content categories: Movies, TV Shows, Anime, Web Series
+- Add rating stars and duration information
+- Include "Continue Watching" section
+- Add genre filters and sorting options
+- Make it look exactly like Netflix/Amazon Prime/Hotstar`
+  }
+
+  baseInstructions += `
 
 Please generate a complete React component with:
 1. All necessary imports
