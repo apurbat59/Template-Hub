@@ -89,53 +89,58 @@ export default function HomePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30">
       {/* Header */}
-      <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <header className="border-b border-slate-200/60 bg-white/80 backdrop-blur-xl sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Code className="w-5 h-5 text-primary-foreground" />
+          <div className="flex items-center space-x-3 group">
+            <div className="w-10 h-10 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200">
+              <Rocket className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-foreground">TemplateHub</span>
+            <div>
+              <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                TemplateHub
+              </span>
+              <p className="text-xs text-slate-500 -mt-1">AI-Powered Templates</p>
+            </div>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
-            <a href="#demos" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#demos" className="text-slate-600 hover:text-blue-600 transition-colors font-medium">
               Live Demos
             </a>
-            <a href="#templates" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#templates" className="text-slate-600 hover:text-blue-600 transition-colors font-medium">
               Templates
             </a>
-            <a href="#dashboard" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#dashboard" className="text-slate-600 hover:text-blue-600 transition-colors font-medium">
               Dashboard
             </a>
             <Link href="/auth">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200">
                 Sign In
               </Button>
             </Link>
             <Link href="/auth">
-              <Button size="sm">Get Started Free</Button>
+              <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">Get Started Free</Button>
             </Link>
           </nav>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="py-24 px-4 text-center bg-gradient-to-br from-background via-card to-background relative overflow-hidden">
+      <section className="py-24 px-4 text-center bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="container mx-auto max-w-6xl relative">
-          <Badge variant="secondary" className="mb-6 animate-pulse">
+          <Badge variant="secondary" className="mb-6 animate-pulse bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 border-blue-200">
             <Sparkles className="w-4 h-4 mr-2" />🚀 Join 50,000+ developers building faster
           </Badge>
-          <h1 className="text-6xl md:text-7xl font-black text-foreground mb-8 text-balance leading-tight">
+          <h1 className="text-6xl md:text-7xl font-black mb-8 text-balance leading-tight">
             Transform Your Ideas into
-            <span className="text-primary"> Reality</span> with
-            <span className="text-secondary"> Live Demos</span>
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Reality</span> with
+            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"> Live Demos</span>
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto text-pretty leading-relaxed">
+          <p className="text-xl md:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto text-pretty leading-relaxed">
             Experience our templates in action with interactive live demos. See exactly what you're getting before you download.{" "}
-            <strong className="text-foreground">Try before you buy.</strong>
+            <strong className="text-slate-900">Try before you buy.</strong>
           </p>
 
           {/* Social Proof */}
@@ -164,13 +169,13 @@ export default function HomePage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Link href="/auth">
-              <Button size="lg" className="text-lg px-12 py-6 shadow-lg hover:shadow-xl transition-all">
+              <Button size="lg" className="text-lg px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
                 Start Building Now - Free
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
             <Link href="#demos">
-              <Button variant="outline" size="lg" className="text-lg px-12 py-6 bg-transparent hover:bg-card">
+              <Button variant="outline" size="lg" className="text-lg px-12 py-6 bg-transparent hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200">
                 <Play className="w-5 h-5 mr-2" />
                 Try Live Demos
               </Button>
@@ -180,42 +185,42 @@ export default function HomePage() {
           {/* Trust indicators */}
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div className="text-center">
-              <div className="text-2xl font-bold text-primary">500+</div>
-              <div className="text-sm text-muted-foreground">Live Demos</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">500+</div>
+              <div className="text-sm text-slate-600">Live Demos</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-secondary">24/7</div>
-              <div className="text-sm text-muted-foreground">AI Assistant</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">24/7</div>
+              <div className="text-sm text-slate-600">AI Assistant</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-accent">99.9%</div>
-              <div className="text-sm text-muted-foreground">Uptime SLA</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">99.9%</div>
+              <div className="text-sm text-slate-600">Uptime SLA</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Live Demo Section */}
-      <section id="demos" className="py-20 px-4 bg-card/30">
+      <section id="demos" className="py-20 px-4 bg-gradient-to-br from-slate-50/50 via-blue-50/20 to-purple-50/20">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Experience Templates in Action</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-900 via-blue-800 to-purple-800 bg-clip-text text-transparent mb-4">Experience Templates in Action</h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
               Click on any template to see it live. No signup required for demos.
             </p>
           </div>
 
           <Tabs defaultValue="dashboards" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="dashboards" className="flex items-center gap-2">
+            <TabsList className="grid w-full max-w-2xl grid-cols-3 mb-8 bg-slate-100/50 p-1 rounded-xl mx-auto">
+              <TabsTrigger value="dashboards" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200">
                 <BarChart3 className="w-4 h-4" />
                 Dashboards
               </TabsTrigger>
-              <TabsTrigger value="landing" className="flex items-center gap-2">
+              <TabsTrigger value="landing" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200">
                 <Globe className="w-4 h-4" />
                 Landing Pages
               </TabsTrigger>
-              <TabsTrigger value="auth" className="flex items-center gap-2">
+              <TabsTrigger value="auth" className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200">
                 <Shield className="w-4 h-4" />
                 Auth Systems
               </TabsTrigger>
@@ -224,7 +229,7 @@ export default function HomePage() {
             <TabsContent value="dashboards" className="space-y-8">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {templateCategories.filter(cat => cat.templates.includes("Dashboard")).map((category) => (
-                  <Card key={category.slug} className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
+                  <Card key={category.slug} className="group hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden border-0 bg-white/80 backdrop-blur-sm">
                     <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200">
                       <Image
                         src={category.preview}
