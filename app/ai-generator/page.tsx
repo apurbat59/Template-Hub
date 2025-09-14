@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo, useEffect } from "react"
+import { generatePreviewHTML } from "./preview-utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -138,54 +139,13 @@ export default function AIGeneratorPage() {
     if (!generatedCode) return null
     
     try {
-      // Create a simple HTML preview by converting JSX to basic HTML
-      let htmlCode = generatedCode
-        .replace(/import.*from.*['"][^'"]*['"];?\s*/g, '') // Remove imports
-        .replace(/export\s+default\s+function\s+(\w+)/, 'function PreviewComponent') // Rename function
-        .replace(/export\s+default\s+PreviewComponent/, '') // Remove export
-        .replace(/className=/g, 'class=') // Convert className to class
-        .replace(/<(\w+)\s+class="([^"]*)"\s*>/g, '<$1 class="$2">') // Fix class attributes
-        .replace(/<(\w+)\s+class="([^"]*)"\s*\/>/g, '<$1 class="$2" />') // Fix self-closing tags
-      
-      // Extract the JSX content and convert to basic HTML
-      const jsxMatch = htmlCode.match(/return\s*\(\s*([\s\S]*?)\s*\)\s*;?\s*$/)
-      if (jsxMatch) {
-        let jsxContent = jsxMatch[1]
-        
-        // Convert JSX to basic HTML
-        jsxContent = jsxContent
-          .replace(/\{([^}]+)\}/g, '$1') // Remove JSX expressions for preview
-          .replace(/className="([^"]*)"/g, 'class="$1"')
-          .replace(/<(\w+)\s+class="([^"]*)"\s*\/>/g, '<$1 class="$2" />')
-        
-        return `
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Template Preview</title>
-            <script src="https://cdn.tailwindcss.com"></script>
-            <style>
-              body { margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-              .preview-container { min-height: 100vh; }
-            </style>
-          </head>
-          <body>
-            <div class="preview-container">
-              ${jsxContent}
-            </div>
-          </body>
-          </html>
-        `
-      }
-      
-      return null
+      // Generate a simple static preview based on template type
+      return generatePreviewHTML(templateType, industry)
     } catch (err) {
       console.error('Preview error:', err)
       return null
     }
-  }, [generatedCode])
+  }, [generatedCode, templateType, industry])
 
   // Handle preview errors separately
   useEffect(() => {
