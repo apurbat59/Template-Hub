@@ -1,20 +1,29 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { SimpleButton } from "@/components/ui/simple-button"
 import {
   ArrowRight,
+  Code,
+  Zap,
   Globe,
   Shield,
   Sparkles,
   Play,
   Rocket,
   BarChart3,
+  TrendingUp,
+  Clock,
+  Users,
+  Heart,
   Star,
+  Download,
   Eye,
+  ExternalLink,
 } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function HomePage() {
   return (
@@ -43,15 +52,11 @@ export default function HomePage() {
             <a href="#dashboard" className="text-slate-600 hover:text-blue-600 transition-colors font-medium">
               Dashboard
             </a>
-            <a href="/auth">
-              <SimpleButton variant="outline" size="sm">
-                Sign In
-              </SimpleButton>
+            <a href="/auth" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 px-4 py-2 border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground">
+              Sign In
             </a>
-            <a href="/auth">
-              <SimpleButton size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
-                Get Started Free
-              </SimpleButton>
+            <a href="/auth" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
+              Get Started Free
             </a>
           </nav>
         </div>
@@ -74,17 +79,13 @@ export default function HomePage() {
             <strong className="text-slate-900">Try before you buy.</strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <a href="/auth">
-              <SimpleButton size="lg" className="text-lg px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
-                Start Building Now - Free
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </SimpleButton>
+            <a href="/auth" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-lg font-medium transition-all disabled:pointer-events-none disabled:opacity-50 px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
+              Start Building Now - Free
+              <ArrowRight className="w-5 h-5 ml-2" />
             </a>
-            <a href="#demos">
-              <SimpleButton variant="outline" size="lg" className="text-lg px-12 py-6 bg-transparent hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200">
-                <Play className="w-5 h-5 mr-2" />
-                Try Live Demos
-              </SimpleButton>
+            <a href="#demos" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-lg font-medium transition-all disabled:pointer-events-none disabled:opacity-50 px-12 py-6 bg-transparent hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200 border">
+              <Play className="w-5 h-5 mr-2" />
+              Try Live Demos
             </a>
           </div>
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
@@ -139,10 +140,8 @@ export default function HomePage() {
                     </div>
                     <span className="text-sm text-slate-500">(128 reviews)</span>
                   </div>
-                  <a href="/templates/agriculture/dashboard-1">
-                    <SimpleButton size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
-                      View Demo
-                    </SimpleButton>
+                  <a href="/templates/agriculture/dashboard-1" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                    View Demo
                   </a>
                 </div>
               </CardContent>
@@ -170,10 +169,8 @@ export default function HomePage() {
                     </div>
                     <span className="text-sm text-slate-500">(95 reviews)</span>
                   </div>
-                  <a href="/templates/agriculture/landing-page-1">
-                    <SimpleButton size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
-                      View Demo
-                    </SimpleButton>
+                  <a href="/templates/agriculture/landing-page-1" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                    View Demo
                   </a>
                 </div>
               </CardContent>
@@ -198,13 +195,11 @@ export default function HomePage() {
                     <div className="flex items-center gap-1">
                       <Star className="w-4 h-4 text-yellow-500 fill-current" />
                       <span className="text-sm font-medium">4.7</span>
-            </div>
+                    </div>
                     <span className="text-sm text-slate-500">(87 reviews)</span>
                   </div>
-                  <a href="/templates/agriculture/auth-1">
-                    <SimpleButton size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
-                      View Demo
-                    </SimpleButton>
+                  <a href="/templates/agriculture/auth-1" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                    View Demo
                   </a>
                 </div>
               </CardContent>
@@ -223,17 +218,13 @@ export default function HomePage() {
             Join thousands of developers who are building faster with our AI-powered templates.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/auth">
-              <SimpleButton size="lg" className="text-lg px-12 py-6 bg-white text-blue-600 hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-200">
-                Get Started Free
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </SimpleButton>
+            <a href="/auth" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-lg font-medium transition-all disabled:pointer-events-none disabled:opacity-50 px-12 py-6 bg-white text-blue-600 hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-200">
+              Get Started Free
+              <ArrowRight className="w-5 h-5 ml-2" />
             </a>
-            <a href="/dashboard">
-              <SimpleButton variant="outline" size="lg" className="text-lg px-12 py-6 bg-transparent border-white text-white hover:bg-white hover:text-blue-600 transition-all duration-200">
-                <Eye className="w-5 h-5 mr-2" />
-                View Dashboard
-              </SimpleButton>
+            <a href="/dashboard" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-lg font-medium transition-all disabled:pointer-events-none disabled:opacity-50 px-12 py-6 bg-transparent border-white text-white hover:bg-white hover:text-blue-600 transition-all duration-200 border">
+              <Eye className="w-5 h-5 mr-2" />
+              View Dashboard
             </a>
           </div>
         </div>

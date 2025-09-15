@@ -1,8 +1,6 @@
 "use client"
 
 import React from 'react'
-import { Button } from '@/components/ui/button'
-import { AlertCircle, RefreshCw } from 'lucide-react'
 
 interface ErrorBoundaryState {
   hasError: boolean
@@ -34,43 +32,21 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 
   render() {
     if (this.state.hasError) {
-      if (this.props.fallback) {
-        return <this.props.fallback error={this.state.error} resetError={this.resetError} />
+      const FallbackComponent = this.props.fallback
+      if (FallbackComponent) {
+        return <FallbackComponent error={this.state.error} resetError={this.resetError} />
       }
 
       return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30">
-          <div className="max-w-md mx-auto text-center p-6">
-            <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <AlertCircle className="w-8 h-8 text-red-600" />
-            </div>
-            <h1 className="text-2xl font-bold text-slate-900 mb-2">Something went wrong</h1>
-            <p className="text-slate-600 mb-6">
-              We're sorry, but something unexpected happened. Please try refreshing the page.
-            </p>
-            <div className="space-y-3">
-              <Button onClick={this.resetError} className="w-full">
-                <RefreshCw className="w-4 h-4 mr-2" />
-                Try Again
-              </Button>
-              <Button 
-                variant="outline" 
-                onClick={() => window.location.href = '/'}
-                className="w-full"
-              >
-                Go to Home
-              </Button>
-            </div>
-            {process.env.NODE_ENV === 'development' && this.state.error && (
-              <details className="mt-4 text-left">
-                <summary className="cursor-pointer text-sm text-slate-500">Error Details</summary>
-                <pre className="mt-2 text-xs text-red-600 bg-red-50 p-2 rounded overflow-auto">
-                  {this.state.error.message}
-                  {this.state.error.stack}
-                </pre>
-              </details>
-            )}
-          </div>
+        <div className="flex flex-col items-center justify-center min-h-[200px] p-8 text-center">
+          <h2 className="text-xl font-semibold text-red-600 mb-2">Something went wrong</h2>
+          <p className="text-gray-600 mb-4">An error occurred while rendering this component.</p>
+          <button
+            onClick={this.resetError}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+          >
+            Try again
+          </button>
         </div>
       )
     }
