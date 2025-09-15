@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
+import { SimpleSimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
@@ -319,10 +319,10 @@ export default function TemplatesPage() {
                 <User className="w-4 h-4 text-muted-foreground" />
                 <span className="text-muted-foreground">{userName}</span>
               </div>
-              <Button variant="outline" size="sm" onClick={handleLogout}>
+              <SimpleButton variant="outline" size="sm" onClick={handleLogout}>
                 <LogOut className="w-4 h-4 mr-2" />
                 Sign Out
-              </Button>
+              </SimpleButton>
             </div>
           </nav>
         </div>
@@ -342,10 +342,10 @@ export default function TemplatesPage() {
           </p>
           <div className="mt-4">
             <Link href="/showcase">
-              <Button variant="outline">
+              <SimpleButton variant="outline">
                 <Eye className="w-4 h-4 mr-2" />
                 View Full Showcase
-              </Button>
+              </SimpleButton>
             </Link>
           </div>
         </div>
@@ -365,27 +365,27 @@ export default function TemplatesPage() {
           </div>
           <div className="flex gap-2">
             <div className="flex border border-border rounded-lg">
-              <Button
+              <SimpleButton
                 variant={viewMode === "grid" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setViewMode("grid")}
                 className="rounded-r-none"
               >
                 <Grid className="w-4 h-4" />
-              </Button>
-              <Button
+              </SimpleButton>
+              <SimpleButton
                 variant={viewMode === "list" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setViewMode("list")}
                 className="rounded-l-none"
               >
                 <List className="w-4 h-4" />
-              </Button>
+              </SimpleButton>
             </div>
-            <Button variant="outline" className="lg:w-auto bg-transparent">
+            <SimpleButton variant="outline" className="lg:w-auto bg-transparent">
               <Filter className="w-4 h-4 mr-2" />
               Filters
-            </Button>
+            </SimpleButton>
           </div>
         </div>
 
@@ -504,16 +504,16 @@ export default function TemplatesPage() {
                       </div>
                       <div className="flex gap-2">
                         <Link href={template.demoUrl} className="flex-1">
-                          <Button variant="outline" size="sm" className="w-full bg-transparent">
+                          <SimpleButton variant="outline" size="sm" className="w-full bg-transparent">
                             <Eye className="w-4 h-4 mr-2" />
                             Live Demo
-                          </Button>
+                          </SimpleButton>
                         </Link>
                         <Link href={template.previewUrl} className="flex-1">
-                          <Button size="sm" className="w-full">
+                          <SimpleButton size="sm" className="w-full">
                             <Download className="w-4 h-4 mr-2" />
                             Details
-                          </Button>
+                          </SimpleButton>
                         </Link>
                       </div>
                     </CardContent>
@@ -525,21 +525,21 @@ export default function TemplatesPage() {
             {filteredTemplates.length > 9 && (
               <div className="flex justify-center mt-8">
                 <div className="flex items-center space-x-2">
-                  <Button variant="outline" size="sm" disabled>
+                  <SimpleButton variant="outline" size="sm" disabled>
                     Previous
-                  </Button>
-                  <Button variant="default" size="sm">
+                  </SimpleButton>
+                  <SimpleButton variant="default" size="sm">
                     1
-                  </Button>
-                  <Button variant="outline" size="sm">
+                  </SimpleButton>
+                  <SimpleButton variant="outline" size="sm">
                     2
-                  </Button>
-                  <Button variant="outline" size="sm">
+                  </SimpleButton>
+                  <SimpleButton variant="outline" size="sm">
                     3
-                  </Button>
-                  <Button variant="outline" size="sm">
+                  </SimpleButton>
+                  <SimpleButton variant="outline" size="sm">
                     Next
-                  </Button>
+                  </SimpleButton>
                 </div>
               </div>
             )}

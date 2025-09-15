@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
+import { SimpleSimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -150,7 +150,7 @@ export default function AuthPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4 mb-6">
-              <Button
+              <SimpleButton
                 onClick={handleGoogleAuth}
                 disabled={isGoogleLoading}
                 size="lg"
@@ -167,7 +167,7 @@ export default function AuthPage() {
                     Continue with Google
                   </>
                 )}
-              </Button>
+              </SimpleButton>
 
               <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
                 <div className="flex items-center gap-1">
@@ -248,7 +248,7 @@ export default function AuthPage() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                       />
-                      <Button
+                      <SimpleButton
                         type="button"
                         variant="ghost"
                         size="sm"
@@ -260,7 +260,7 @@ export default function AuthPage() {
                         ) : (
                           <Eye className="h-4 w-4 text-muted-foreground" />
                         )}
-                      </Button>
+                      </SimpleButton>
                     </div>
                   </div>
                   
@@ -278,9 +278,9 @@ export default function AuthPage() {
                     </Alert>
                   )}
                   
-                  <Button type="submit" className="w-full" disabled={isLoading || !emailValid}>
+                  <SimpleButton type="submit" className="w-full" disabled={isLoading || !emailValid}>
                     {isLoading ? "Signing in..." : "Sign In"}
-                  </Button>
+                  </SimpleButton>
                 </form>
               </TabsContent>
 
@@ -347,7 +347,7 @@ export default function AuthPage() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                       />
-                      <Button
+                      <SimpleButton
                         type="button"
                         variant="ghost"
                         size="sm"
@@ -359,7 +359,7 @@ export default function AuthPage() {
                         ) : (
                           <Eye className="h-4 w-4 text-muted-foreground" />
                         )}
-                      </Button>
+                      </SimpleButton>
                     </div>
                     {password.length > 0 && password.length < 6 && (
                       <p className="text-sm text-red-500 flex items-center gap-1">
@@ -383,9 +383,9 @@ export default function AuthPage() {
                     </Alert>
                   )}
                   
-                  <Button type="submit" className="w-full" disabled={isLoading || !emailValid || password.length < 6}>
+                  <SimpleButton type="submit" className="w-full" disabled={isLoading || !emailValid || password.length < 6}>
                     {isLoading ? "Creating account..." : "Create Free Account"}
-                  </Button>
+                  </SimpleButton>
                 </form>
               </TabsContent>
             </Tabs>

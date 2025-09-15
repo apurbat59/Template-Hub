@@ -19,10 +19,6 @@ const nextConfig = {
   poweredByHeader: false,
   generateEtags: false,
   compress: true,
-  output: 'export',
-  trailingSlash: true,
-  skipTrailingSlashRedirect: true,
-  distDir: 'out',
 }
 
 export default nextConfig

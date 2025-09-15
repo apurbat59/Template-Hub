@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { SimpleSimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
@@ -245,10 +245,10 @@ export default function TemplatShowcase() {
             <Link href="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors">
               Dashboard
             </Link>
-            <Button variant="outline" size="sm">
+            <SimpleButton variant="outline" size="sm">
               Sign In
-            </Button>
-            <Button size="sm">Get Started</Button>
+            </SimpleButton>
+            <SimpleButton size="sm">Get Started</SimpleButton>
           </nav>
         </div>
       </header>
@@ -274,10 +274,10 @@ export default function TemplatShowcase() {
             />
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" size="sm">
+            <SimpleButton variant="outline" size="sm">
               <Filter className="w-4 h-4 mr-2" />
               Filter
-            </Button>
+            </SimpleButton>
           </div>
         </div>
 
@@ -306,16 +306,16 @@ export default function TemplatShowcase() {
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex space-x-2">
                       <Link href={template.demoUrl}>
-                        <Button size="sm" className="bg-white text-black hover:bg-gray-100">
+                        <SimpleButton size="sm" className="bg-white text-black hover:bg-gray-100">
                           <Eye className="w-4 h-4 mr-2" />
                           Demo
-                        </Button>
+                        </SimpleButton>
                       </Link>
                       <Link href={template.previewUrl}>
-                        <Button size="sm" variant="outline" className="bg-white/90 hover:bg-white">
+                        <SimpleButton size="sm" variant="outline" className="bg-white/90 hover:bg-white">
                           <Layout className="w-4 h-4 mr-2" />
                           Details
-                        </Button>
+                        </SimpleButton>
                       </Link>
                     </div>
                   </div>

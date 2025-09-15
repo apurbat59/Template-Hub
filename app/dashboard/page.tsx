@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import ErrorBoundary from "@/components/error-boundary"
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -355,10 +355,10 @@ export default function ${template.name.replace(/\s+/g, '')}() {
               />
             </div>
             
-            <Button variant="outline" size="sm" className="hover:bg-slate-100/50 transition-all duration-200">
+            <SimpleSimpleButton variant="outline" size="sm" className="hover:bg-slate-100/50 transition-all duration-200">
               <Filter className="w-4 h-4 mr-2" />
               Filter
-            </Button>
+            </SimpleSimpleButton>
             
             <div className="relative">
               <Bell className="w-6 h-6 text-slate-600 cursor-pointer hover:text-blue-600 transition-colors" />
@@ -378,10 +378,10 @@ export default function ${template.name.replace(/\s+/g, '')}() {
               </div>
             </div>
             
-            <Button variant="outline" size="sm" onClick={handleLogout} className="hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-all duration-200">
+            <SimpleSimpleButton variant="outline" size="sm" onClick={handleLogout} className="hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-all duration-200">
               <LogOut className="w-4 h-4 mr-2" />
               Logout
-            </Button>
+            </SimpleSimpleButton>
           </div>
         </div>
       </header>
@@ -507,13 +507,13 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                   </p>
                 </div>
               </div>
-              <Button 
+              <SimpleButton 
                 onClick={() => setActiveTab("ai-generator")}
                 className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
               >
                 <Sparkles className="w-4 h-4 mr-2 animate-spin" />
                 Try AI Generator
-              </Button>
+              </SimpleButton>
             </div>
           </div>
         )}
@@ -559,29 +559,29 @@ export default function ${template.name.replace(/\s+/g, '')}() {
             
             <div className="flex items-center space-x-2">
               <div className="flex items-center space-x-1 border rounded-lg p-1">
-                <Button
+                <SimpleButton
                   variant={viewMode === "grid" ? "default" : "ghost"}
                   size="sm"
                   onClick={() => setViewMode("grid")}
                 >
                   <Grid3X3 className="w-4 h-4" />
-                </Button>
-                <Button
+                </SimpleButton>
+                <SimpleButton
                   variant={viewMode === "list" ? "default" : "ghost"}
                   size="sm"
                   onClick={() => setViewMode("list")}
                 >
                   <List className="w-4 h-4" />
-                </Button>
+                </SimpleButton>
               </div>
               
-              <Button
+              <SimpleButton
                 variant="outline"
                 size="sm"
                 onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
               >
                 {sortOrder === "asc" ? <SortAsc className="w-4 h-4" /> : <SortDesc className="w-4 h-4" />}
-              </Button>
+              </SimpleButton>
             </div>
           </div>
 
@@ -598,12 +598,12 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent group-hover:from-black/40 transition-all duration-500" />
                     <div className="absolute top-4 right-4 flex gap-2">
-                      <Button size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-red-50 hover:text-red-600 backdrop-blur-sm">
+                      <SimpleButton size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-red-50 hover:text-red-600 backdrop-blur-sm">
                         <Heart className="w-4 h-4" />
-                      </Button>
-                      <Button size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-50 hover:text-blue-600 backdrop-blur-sm">
+                      </SimpleButton>
+                      <SimpleButton size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-50 hover:text-blue-600 backdrop-blur-sm">
                         <Play className="w-4 h-4" />
-                      </Button>
+                      </SimpleButton>
                     </div>
                     <div className="absolute bottom-4 left-4 flex gap-2">
                       <Badge className={`${getTemplateTypeColor(template.type)} backdrop-blur-sm shadow-lg`}>
@@ -651,31 +651,31 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                     
                     <div className="flex gap-2">
                       <Link href={`/templates/${template.categorySlug}/dashboard-1`} className="flex-1">
-                        <Button size="sm" className="w-full">
+                        <SimpleButton size="sm" className="w-full">
                           <Eye className="w-4 h-4 mr-1" />
                           View Demo
-                        </Button>
+                        </SimpleButton>
                       </Link>
                       <CodePreview template={template}>
-                        <Button size="sm" variant="outline">
+                        <SimpleButton size="sm" variant="outline">
                           <Eye className="w-4 h-4" />
-                        </Button>
+                        </SimpleButton>
                       </CodePreview>
-                      <Button 
+                      <SimpleButton 
                         size="sm" 
                         variant="outline"
                         onClick={() => handleDownload(template)}
                         disabled={downloadStatus[`${template.categorySlug}-${template.type}`] === "downloading"}
                       >
                         <Download className="w-4 h-4" />
-                      </Button>
-                      <Button 
+                      </SimpleButton>
+                      <SimpleButton 
                         size="sm" 
                         variant="outline"
                         onClick={() => handleCopyCode(template)}
                       >
                         <Copy className="w-4 h-4" />
-                      </Button>
+                      </SimpleButton>
                     </div>
                   </CardContent>
                 </Card>
@@ -696,12 +696,12 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                     />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                     <div className="absolute top-4 right-4 flex gap-2">
-                      <Button size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                      <SimpleButton size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
                         <Heart className="w-4 h-4" />
-                      </Button>
-                      <Button size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                      </SimpleButton>
+                      <SimpleButton size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
                         <Play className="w-4 h-4" />
-                      </Button>
+                      </SimpleButton>
                     </div>
                     <div className="absolute bottom-4 left-4 flex gap-2">
                       <Badge className={getTemplateTypeColor(template.type)}>
@@ -744,31 +744,31 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                     
                     <div className="flex gap-2">
                       <Link href={`/templates/${template.categorySlug}/landing-page-1`} className="flex-1">
-                        <Button size="sm" className="w-full">
+                        <SimpleButton size="sm" className="w-full">
                           <Eye className="w-4 h-4 mr-1" />
                           View Demo
-                        </Button>
+                        </SimpleButton>
                       </Link>
                       <CodePreview template={template}>
-                        <Button size="sm" variant="outline">
+                        <SimpleButton size="sm" variant="outline">
                           <Eye className="w-4 h-4" />
-                        </Button>
+                        </SimpleButton>
                       </CodePreview>
-                      <Button 
+                      <SimpleButton 
                         size="sm" 
                         variant="outline"
                         onClick={() => handleDownload(template)}
                         disabled={downloadStatus[`${template.categorySlug}-${template.type}`] === "downloading"}
                       >
                         <Download className="w-4 h-4" />
-                      </Button>
-                      <Button 
+                      </SimpleButton>
+                      <SimpleButton 
                         size="sm" 
                         variant="outline"
                         onClick={() => handleCopyCode(template)}
                       >
                         <Copy className="w-4 h-4" />
-                      </Button>
+                      </SimpleButton>
                     </div>
                   </CardContent>
                 </Card>
@@ -789,12 +789,12 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                     </div>
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                     <div className="absolute top-4 right-4 flex gap-2">
-                      <Button size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                      <SimpleButton size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
                         <Heart className="w-4 h-4" />
-                      </Button>
-                      <Button size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                      </SimpleButton>
+                      <SimpleButton size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
                         <Play className="w-4 h-4" />
-                      </Button>
+                      </SimpleButton>
                     </div>
                     <div className="absolute bottom-4 left-4 flex gap-2">
                       <Badge className={getTemplateTypeColor(template.type)}>
@@ -837,31 +837,31 @@ export default function ${template.name.replace(/\s+/g, '')}() {
                     
                     <div className="flex gap-2">
                       <Link href={`/templates/${template.categorySlug}/auth-1`} className="flex-1">
-                        <Button size="sm" className="w-full">
+                        <SimpleButton size="sm" className="w-full">
                           <Eye className="w-4 h-4 mr-1" />
                           View Demo
-                        </Button>
+                        </SimpleButton>
                       </Link>
                       <CodePreview template={template}>
-                        <Button size="sm" variant="outline">
+                        <SimpleButton size="sm" variant="outline">
                           <Eye className="w-4 h-4" />
-                        </Button>
+                        </SimpleButton>
                       </CodePreview>
-                      <Button 
+                      <SimpleButton 
                         size="sm" 
                         variant="outline"
                         onClick={() => handleDownload(template)}
                         disabled={downloadStatus[`${template.categorySlug}-${template.type}`] === "downloading"}
                       >
                         <Download className="w-4 h-4" />
-                      </Button>
-                      <Button 
+                      </SimpleButton>
+                      <SimpleButton 
                         size="sm" 
                         variant="outline"
                         onClick={() => handleCopyCode(template)}
                       >
                         <Copy className="w-4 h-4" />
-                      </Button>
+                      </SimpleButton>
                     </div>
                   </CardContent>
                 </Card>
@@ -904,16 +904,16 @@ export default function ${template.name.replace(/\s+/g, '')}() {
         </Tabs>
       </div>
 
-      {/* Floating AI Generator Button */}
+      {/* Floating AI Generator SimpleButton */}
       {activeTab !== "ai-generator" && (
         <div className="fixed bottom-6 right-6 z-50">
-          <Button
+          <SimpleButton
             onClick={() => setActiveTab("ai-generator")}
             size="lg"
             className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 animate-pulse"
           >
             <Wand2 className="w-8 h-8" />
-          </Button>
+          </SimpleButton>
           <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center animate-bounce">
             <Sparkles className="w-4 h-4 text-white" />
           </div>
