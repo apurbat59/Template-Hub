@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -54,13 +54,13 @@ export default function EcommerceDashboard1() {
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm">
+            <SimpleButton variant="outline" size="sm">
               <Filter className="w-4 h-4 mr-2" />
               Filter
-            </Button>
-            <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+            </SimpleButton>
+            <SimpleButton size="sm" className="bg-blue-600 hover:bg-blue-700">
               Add Product
-            </Button>
+            </SimpleButton>
             <Avatar>
               <AvatarImage src="/admin-avatar.jpg" />
               <AvatarFallback>AD</AvatarFallback>
@@ -73,38 +73,38 @@ export default function EcommerceDashboard1() {
         {/* Sidebar */}
         <aside className="w-64 bg-white border-r border-gray-200 min-h-screen p-6">
           <nav className="space-y-2">
-            <Button
+            <SimpleButton
               variant={activeTab === "overview" ? "default" : "ghost"}
               className="w-full justify-start"
               onClick={() => setActiveTab("overview")}
             >
               <TrendingUp className="w-4 h-4 mr-2" />
               Overview
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant={activeTab === "orders" ? "default" : "ghost"}
               className="w-full justify-start"
               onClick={() => setActiveTab("orders")}
             >
               <ShoppingCart className="w-4 h-4 mr-2" />
               Orders
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant={activeTab === "products" ? "default" : "ghost"}
               className="w-full justify-start"
               onClick={() => setActiveTab("products")}
             >
               <Package className="w-4 h-4 mr-2" />
               Products
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant={activeTab === "customers" ? "default" : "ghost"}
               className="w-full justify-start"
               onClick={() => setActiveTab("customers")}
             >
               <Users className="w-4 h-4 mr-2" />
               Customers
-            </Button>
+            </SimpleButton>
           </nav>
         </aside>
 
@@ -270,9 +270,9 @@ export default function EcommerceDashboard1() {
                           >
                             {order.status}
                           </Badge>
-                          <Button variant="outline" size="sm">
+                          <SimpleButton variant="outline" size="sm">
                             View Details
-                          </Button>
+                          </SimpleButton>
                         </div>
                       </div>
                     ))}
@@ -315,12 +315,12 @@ export default function EcommerceDashboard1() {
                               </div>
                             </div>
                             <div className="mt-3 flex space-x-2">
-                              <Button variant="outline" size="sm">
+                              <SimpleButton variant="outline" size="sm">
                                 Edit
-                              </Button>
-                              <Button variant="outline" size="sm">
+                              </SimpleButton>
+                              <SimpleButton variant="outline" size="sm">
                                 View
-                              </Button>
+                              </SimpleButton>
                             </div>
                           </div>
                         </div>
@@ -374,9 +374,9 @@ export default function EcommerceDashboard1() {
                           >
                             {customer.status}
                           </Badge>
-                          <Button variant="outline" size="sm">
+                          <SimpleButton variant="outline" size="sm">
                             View Profile
-                          </Button>
+                          </SimpleButton>
                         </div>
                       </div>
                     ))}

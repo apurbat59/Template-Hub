@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { TrendingUp, Shield, BarChart3, DollarSign, ArrowRight, Check, Users, Award } from "lucide-react"
@@ -83,12 +83,12 @@ export default function FinanceLandingPage1() {
             <a href="#about" className="text-slate-600 hover:text-slate-900 transition-colors font-medium">
               About
             </a>
-            <Button variant="outline" size="sm" className="border-slate-300 bg-transparent">
+            <SimpleButton variant="outline" size="sm" className="border-slate-300 bg-transparent">
               Sign In
-            </Button>
-            <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
+            </SimpleButton>
+            <SimpleButton size="sm" className="bg-emerald-600 hover:bg-emerald-700">
               Get Started
-            </Button>
+            </SimpleButton>
           </nav>
         </div>
       </header>
@@ -111,17 +111,17 @@ export default function FinanceLandingPage1() {
                 little as $100.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <Button size="lg" className="text-lg px-8 bg-emerald-600 hover:bg-emerald-700">
+                <SimpleButton size="lg" className="text-lg px-8 bg-emerald-600 hover:bg-emerald-700">
                   Start Investing
                   <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button
+                </SimpleButton>
+                <SimpleButton
                   variant="outline"
                   size="lg"
                   className="text-lg px-8 border-white/20 text-white hover:bg-white/10 bg-transparent"
                 >
                   Watch Demo
-                </Button>
+                </SimpleButton>
               </div>
 
               {/* Stats */}
@@ -216,13 +216,13 @@ export default function FinanceLandingPage1() {
                       </li>
                     ))}
                   </ul>
-                  <Button
+                  <SimpleButton
                     className={`w-full ${
                       plan.popular ? "bg-emerald-600 hover:bg-emerald-700" : "bg-slate-900 hover:bg-slate-800"
                     }`}
                   >
                     {plan.price === "Custom" ? "Contact Sales" : "Get Started"}
-                  </Button>
+                  </SimpleButton>
                 </CardContent>
               </Card>
             ))}
@@ -238,16 +238,16 @@ export default function FinanceLandingPage1() {
             Join thousands of investors who trust WealthTech to grow their portfolios
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 bg-white text-emerald-600 hover:bg-slate-100">
+            <SimpleButton size="lg" className="text-lg px-8 bg-white text-emerald-600 hover:bg-slate-100">
               Open Account
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant="outline"
               size="lg"
               className="text-lg px-8 border-white text-white hover:bg-white/10 bg-transparent"
             >
               Schedule Consultation
-            </Button>
+            </SimpleButton>
           </div>
         </div>
       </section>

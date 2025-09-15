@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ShoppingBag, Truck, Shield, Star, ArrowRight, Check, Heart } from "lucide-react"
@@ -79,13 +79,13 @@ export default function EcommerceLandingPage1() {
             <a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors">
               About
             </a>
-            <Button variant="outline" size="sm">
+            <SimpleButton variant="outline" size="sm">
               Sign In
-            </Button>
-            <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+            </SimpleButton>
+            <SimpleButton size="sm" className="bg-blue-600 hover:bg-blue-700">
               <ShoppingBag className="w-4 h-4 mr-2" />
               Cart (0)
-            </Button>
+            </SimpleButton>
           </nav>
         </div>
       </header>
@@ -104,13 +104,13 @@ export default function EcommerceLandingPage1() {
                 Discover amazing products at unbeatable prices. Quality guaranteed, satisfaction promised.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 bg-blue-600 hover:bg-blue-700">
+                <SimpleButton size="lg" className="text-lg px-8 bg-blue-600 hover:bg-blue-700">
                   Shop Now
                   <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 bg-transparent">
+                </SimpleButton>
+                <SimpleButton variant="outline" size="lg" className="text-lg px-8 bg-transparent">
                   Browse Categories
-                </Button>
+                </SimpleButton>
               </div>
               <div className="flex items-center space-x-8 mt-8 text-sm text-gray-600">
                 <div className="flex items-center space-x-2">
@@ -191,13 +191,13 @@ export default function EcommerceLandingPage1() {
                       {product.badge}
                     </Badge>
                   </div>
-                  <Button
+                  <SimpleButton
                     size="sm"
                     variant="outline"
                     className="absolute top-4 right-4 w-10 h-10 p-0 bg-white/80 hover:bg-white"
                   >
                     <Heart className="w-4 h-4" />
-                  </Button>
+                  </SimpleButton>
                 </div>
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{product.name}</h3>
@@ -221,10 +221,10 @@ export default function EcommerceLandingPage1() {
                       {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
                     </Badge>
                   </div>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                  <SimpleButton className="w-full bg-blue-600 hover:bg-blue-700">
                     <ShoppingBag className="w-4 h-4 mr-2" />
                     Add to Cart
-                  </Button>
+                  </SimpleButton>
                 </CardContent>
               </Card>
             ))}
@@ -243,7 +243,7 @@ export default function EcommerceLandingPage1() {
               placeholder="Enter your email"
               className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
             />
-            <Button className="bg-white text-blue-600 hover:bg-gray-100">Subscribe</Button>
+            <SimpleButton className="bg-white text-blue-600 hover:bg-gray-100">Subscribe</SimpleButton>
           </div>
         </div>
       </section>

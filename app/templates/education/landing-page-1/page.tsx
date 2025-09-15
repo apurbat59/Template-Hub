@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { BookOpen, Users, Award, Play, ArrowRight, Star, Clock } from "lucide-react"
@@ -92,12 +92,12 @@ export default function EducationLandingPage1() {
             <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
               Pricing
             </a>
-            <Button variant="outline" size="sm" className="border-orange-200 bg-transparent">
+            <SimpleButton variant="outline" size="sm" className="border-orange-200 bg-transparent">
               Sign In
-            </Button>
-            <Button size="sm" className="bg-orange-500 hover:bg-orange-600">
+            </SimpleButton>
+            <SimpleButton size="sm" className="bg-orange-500 hover:bg-orange-600">
               Get Started
-            </Button>
+            </SimpleButton>
           </nav>
         </div>
       </header>
@@ -120,14 +120,14 @@ export default function EducationLandingPage1() {
                 comprehensive courses and hands-on projects.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <Button size="lg" className="text-lg px-8 bg-orange-500 hover:bg-orange-600">
+                <SimpleButton size="lg" className="text-lg px-8 bg-orange-500 hover:bg-orange-600">
                   Start Learning Today
                   <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 border-orange-200 bg-transparent">
+                </SimpleButton>
+                <SimpleButton variant="outline" size="lg" className="text-lg px-8 border-orange-200 bg-transparent">
                   <Play className="w-5 h-5 mr-2" />
                   Watch Demo
-                </Button>
+                </SimpleButton>
               </div>
 
               {/* Stats */}
@@ -244,7 +244,7 @@ export default function EducationLandingPage1() {
                       <span className="text-lg text-gray-500 line-through">${course.originalPrice}</span>
                     </div>
                   </div>
-                  <Button className="w-full bg-orange-500 hover:bg-orange-600">Enroll Now</Button>
+                  <SimpleButton className="w-full bg-orange-500 hover:bg-orange-600">Enroll Now</SimpleButton>
                 </CardContent>
               </Card>
             ))}
@@ -312,16 +312,16 @@ export default function EducationLandingPage1() {
             Join over 500,000 students and start building the skills you need for your dream career
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 bg-white text-orange-500 hover:bg-gray-100">
+            <SimpleButton size="lg" className="text-lg px-8 bg-white text-orange-500 hover:bg-gray-100">
               Start Free Trial
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant="outline"
               size="lg"
               className="text-lg px-8 border-white text-white hover:bg-white/10 bg-transparent"
             >
               Browse Courses
-            </Button>
+            </SimpleButton>
           </div>
         </div>
       </section>

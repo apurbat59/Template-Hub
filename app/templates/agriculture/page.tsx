@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Code, Eye, Download, Star, ArrowLeft } from "lucide-react"
@@ -72,11 +72,11 @@ export default function AgricultureTemplatesPage() {
               AI Assistant
             </Link>
             <Link href="/auth">
-              <Button variant="outline" size="sm">
+              <SimpleButton variant="outline" size="sm">
                 Sign In
-              </Button>
+              </SimpleButton>
             </Link>
-            <Button size="sm">Get Started</Button>
+            <SimpleButton size="sm">Get Started</SimpleButton>
           </nav>
         </div>
       </header>
@@ -181,16 +181,16 @@ export default function AgricultureTemplatesPage() {
 
                       <div className="flex gap-3 pt-4">
                         <Link href={template.demoUrl} className="flex-1">
-                          <Button variant="outline" size="sm" className="w-full bg-transparent">
+                          <SimpleButton variant="outline" size="sm" className="w-full bg-transparent">
                             <Eye className="w-4 h-4 mr-2" />
                             Live Demo
-                          </Button>
+                          </SimpleButton>
                         </Link>
                         <Link href={`/templates/${template.id}/preview`} className="flex-1">
-                          <Button size="sm" className="w-full">
+                          <SimpleButton size="sm" className="w-full">
                             <Download className="w-4 h-4 mr-2" />
                             Details
-                          </Button>
+                          </SimpleButton>
                         </Link>
                       </div>
                     </div>

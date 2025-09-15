@@ -355,10 +355,10 @@ export default function ${template.name.replace(/\s+/g, '')}() {
               />
             </div>
             
-            <SimpleSimpleButton variant="outline" size="sm" className="hover:bg-slate-100/50 transition-all duration-200">
+            <SimpleButton variant="outline" size="sm" className="hover:bg-slate-100/50 transition-all duration-200">
               <Filter className="w-4 h-4 mr-2" />
               Filter
-            </SimpleSimpleButton>
+            </SimpleButton>
             
             <div className="relative">
               <Bell className="w-6 h-6 text-slate-600 cursor-pointer hover:text-blue-600 transition-colors" />
@@ -378,10 +378,10 @@ export default function ${template.name.replace(/\s+/g, '')}() {
               </div>
             </div>
             
-            <SimpleSimpleButton variant="outline" size="sm" onClick={handleLogout} className="hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-all duration-200">
+            <SimpleButton variant="outline" size="sm" onClick={handleLogout} className="hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-all duration-200">
               <LogOut className="w-4 h-4 mr-2" />
               Logout
-            </SimpleSimpleButton>
+            </SimpleButton>
           </div>
         </div>
       </header>

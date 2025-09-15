@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from 'react'
-import { Button } from '@/components/ui/button'
+import { SimpleSimpleButton } from '@/components/ui/simple-button'
 import { AlertCircle, RefreshCw, Home } from 'lucide-react'
 import Link from 'next/link'
 
@@ -27,15 +27,15 @@ export default function Error({
           We're sorry, but something unexpected happened. Please try again or go back to the home page.
         </p>
         <div className="space-y-3">
-          <Button onClick={reset} className="w-full">
+          <SimpleSimpleButton onClick={reset} className="w-full">
             <RefreshCw className="w-4 h-4 mr-2" />
             Try Again
-          </Button>
+          </SimpleSimpleButton>
           <Link href="/" className="block">
-            <Button variant="outline" className="w-full">
+            <SimpleSimpleButton variant="outline" className="w-full">
               <Home className="w-4 h-4 mr-2" />
               Go to Home
-            </Button>
+            </SimpleSimpleButton>
           </Link>
         </div>
         {process.env.NODE_ENV === 'development' && (

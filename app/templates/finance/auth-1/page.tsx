@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -104,13 +104,13 @@ export default function FinanceAuth1() {
                         Remember me
                       </Label>
                     </div>
-                    <Button variant="link" className="text-emerald-600 p-0 h-auto">
+                    <SimpleButton variant="link" className="text-emerald-600 p-0 h-auto">
                       Forgot password?
-                    </Button>
+                    </SimpleButton>
                   </div>
-                  <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700" disabled={isLoading}>
+                  <SimpleButton type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700" disabled={isLoading}>
                     {isLoading ? "Signing in..." : "Access Dashboard"}
-                  </Button>
+                  </SimpleButton>
                 </form>
               </TabsContent>
 
@@ -226,18 +226,18 @@ export default function FinanceAuth1() {
                     <Checkbox id="terms" className="mt-1" />
                     <Label htmlFor="terms" className="text-sm leading-relaxed">
                       I agree to the{" "}
-                      <Button variant="link" className="text-emerald-600 p-0 h-auto">
+                      <SimpleButton variant="link" className="text-emerald-600 p-0 h-auto">
                         Terms of Service
-                      </Button>{" "}
+                      </SimpleButton>{" "}
                       and{" "}
-                      <Button variant="link" className="text-emerald-600 p-0 h-auto">
+                      <SimpleButton variant="link" className="text-emerald-600 p-0 h-auto">
                         Privacy Policy
-                      </Button>
+                      </SimpleButton>
                     </Label>
                   </div>
-                  <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700" disabled={isLoading}>
+                  <SimpleButton type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700" disabled={isLoading}>
                     {isLoading ? "Creating Account..." : "Create Investment Account"}
-                  </Button>
+                  </SimpleButton>
                 </form>
               </TabsContent>
             </Tabs>
@@ -252,10 +252,10 @@ export default function FinanceAuth1() {
                 </div>
               </div>
               <div className="mt-4">
-                <Button variant="outline" className="w-full border-slate-300 bg-transparent">
+                <SimpleButton variant="outline" className="w-full border-slate-300 bg-transparent">
                   <CreditCard className="w-4 h-4 mr-2" />
                   Connect with Bank Account
-                </Button>
+                </SimpleButton>
               </div>
             </div>
 

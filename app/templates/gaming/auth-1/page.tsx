@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -120,17 +120,17 @@ export default function GamingAuth1() {
                         Stay logged in
                       </Label>
                     </div>
-                    <Button variant="link" className="text-purple-400 p-0 h-auto hover:text-purple-300">
+                    <SimpleButton variant="link" className="text-purple-400 p-0 h-auto hover:text-purple-300">
                       Forgot password?
-                    </Button>
+                    </SimpleButton>
                   </div>
-                  <Button
+                  <SimpleButton
                     type="submit"
                     className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
                     disabled={isLoading}
                   >
                     {isLoading ? "Loading..." : "Enter Game"}
-                  </Button>
+                  </SimpleButton>
                 </form>
               </TabsContent>
 
@@ -213,22 +213,22 @@ export default function GamingAuth1() {
                     <Checkbox id="terms" className="mt-1" />
                     <Label htmlFor="terms" className="text-sm leading-relaxed text-gray-300">
                       I agree to the{" "}
-                      <Button variant="link" className="text-purple-400 p-0 h-auto hover:text-purple-300">
+                      <SimpleButton variant="link" className="text-purple-400 p-0 h-auto hover:text-purple-300">
                         Terms of Service
-                      </Button>{" "}
+                      </SimpleButton>{" "}
                       and{" "}
-                      <Button variant="link" className="text-purple-400 p-0 h-auto hover:text-purple-300">
+                      <SimpleButton variant="link" className="text-purple-400 p-0 h-auto hover:text-purple-300">
                         Privacy Policy
-                      </Button>
+                      </SimpleButton>
                     </Label>
                   </div>
-                  <Button
+                  <SimpleButton
                     type="submit"
                     className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
                     disabled={isLoading}
                   >
                     {isLoading ? "Creating Account..." : "Join the Game"}
-                  </Button>
+                  </SimpleButton>
                 </form>
               </TabsContent>
             </Tabs>
@@ -243,21 +243,21 @@ export default function GamingAuth1() {
                 </div>
               </div>
               <div className="mt-4 grid grid-cols-3 gap-3">
-                <Button variant="outline" className="border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
+                <SimpleButton variant="outline" className="border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.024-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.221.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-12.014C24.007 5.36 18.641.001 12.017.001z" />
                   </svg>
-                </Button>
-                <Button variant="outline" className="border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
+                </SimpleButton>
+                <SimpleButton variant="outline" className="border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                   </svg>
-                </Button>
-                <Button variant="outline" className="border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
+                </SimpleButton>
+                <SimpleButton variant="outline" className="border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z" />
                   </svg>
-                </Button>
+                </SimpleButton>
               </div>
             </div>
           </CardContent>

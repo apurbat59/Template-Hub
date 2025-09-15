@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -65,10 +65,10 @@ export default function GamingDashboard1() {
             </Badge>
           </div>
           <div className="flex items-center space-x-4">
-            <Button variant="outline" className="border-gray-600 text-white hover:bg-gray-700 bg-transparent">
+            <SimpleButton variant="outline" className="border-gray-600 text-white hover:bg-gray-700 bg-transparent">
               <Settings className="w-4 h-4 mr-2" />
               Settings
-            </Button>
+            </SimpleButton>
             <Avatar>
               <AvatarImage src="/admin-avatar.jpg" />
               <AvatarFallback>AD</AvatarFallback>
@@ -81,38 +81,38 @@ export default function GamingDashboard1() {
         {/* Sidebar */}
         <aside className="w-64 bg-gray-800 border-r border-gray-700 min-h-screen p-6">
           <nav className="space-y-2">
-            <Button
+            <SimpleButton
               variant={activeTab === "overview" ? "default" : "ghost"}
               className="w-full justify-start text-white hover:bg-gray-700"
               onClick={() => setActiveTab("overview")}
             >
               <BarChart3 className="w-4 h-4 mr-2" />
               Overview
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant={activeTab === "players" ? "default" : "ghost"}
               className="w-full justify-start text-white hover:bg-gray-700"
               onClick={() => setActiveTab("players")}
             >
               <Users className="w-4 h-4 mr-2" />
               Players
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant={activeTab === "games" ? "default" : "ghost"}
               className="w-full justify-start text-white hover:bg-gray-700"
               onClick={() => setActiveTab("games")}
             >
               <Gamepad2 className="w-4 h-4 mr-2" />
               Games
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant={activeTab === "achievements" ? "default" : "ghost"}
               className="w-full justify-start text-white hover:bg-gray-700"
               onClick={() => setActiveTab("achievements")}
             >
               <Trophy className="w-4 h-4 mr-2" />
               Achievements
-            </Button>
+            </SimpleButton>
           </nav>
         </aside>
 
@@ -278,13 +278,13 @@ export default function GamingDashboard1() {
                           >
                             {player.status}
                           </Badge>
-                          <Button
+                          <SimpleButton
                             variant="outline"
                             size="sm"
                             className="border-gray-600 text-white hover:bg-gray-600 bg-transparent"
                           >
                             View Profile
-                          </Button>
+                          </SimpleButton>
                         </div>
                       </div>
                     ))}
@@ -308,20 +308,20 @@ export default function GamingDashboard1() {
                         <div className="flex items-center justify-between mb-4">
                           <h3 className="font-semibold text-white">{game.game}</h3>
                           <div className="flex space-x-2">
-                            <Button
+                            <SimpleButton
                               variant="outline"
                               size="sm"
                               className="border-gray-600 text-white hover:bg-gray-600 bg-transparent"
                             >
                               <Play className="w-4 h-4" />
-                            </Button>
-                            <Button
+                            </SimpleButton>
+                            <SimpleButton
                               variant="outline"
                               size="sm"
                               className="border-gray-600 text-white hover:bg-gray-600 bg-transparent"
                             >
                               <Pause className="w-4 h-4" />
-                            </Button>
+                            </SimpleButton>
                           </div>
                         </div>
                         <div className="space-y-2">

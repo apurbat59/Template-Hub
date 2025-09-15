@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { SimpleSimpleButton } from '@/components/ui/simple-button'
 import { Home, ArrowLeft } from 'lucide-react'
 
 export default function NotFound() {
@@ -15,15 +15,15 @@ export default function NotFound() {
         </p>
         <div className="space-y-3">
           <Link href="/">
-            <Button className="w-full">
+            <SimpleSimpleButton className="w-full">
               <Home className="w-4 h-4 mr-2" />
               Go to Home
-            </Button>
+            </SimpleSimpleButton>
           </Link>
-          <Button variant="outline" onClick={() => window.history.back()} className="w-full">
+          <SimpleSimpleButton variant="outline" onClick={() => window.history.back()} className="w-full">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Go Back
-          </Button>
+          </SimpleSimpleButton>
         </div>
       </div>
     </div>

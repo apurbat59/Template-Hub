@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Leaf, Droplets, Sun, BarChart3, ArrowRight, Check, Thermometer, Cloud } from "lucide-react"
@@ -74,12 +74,12 @@ export default function AgricultureLandingPage1() {
             <a href="#support" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
               Support
             </a>
-            <Button variant="outline" size="sm" className="border-green-300 bg-transparent">
+            <SimpleButton variant="outline" size="sm" className="border-green-300 bg-transparent">
               Sign In
-            </Button>
-            <Button size="sm" className="bg-green-600 hover:bg-green-700">
+            </SimpleButton>
+            <SimpleButton size="sm" className="bg-green-600 hover:bg-green-700">
               Get Started
-            </Button>
+            </SimpleButton>
           </nav>
         </div>
       </header>
@@ -102,13 +102,13 @@ export default function AgricultureLandingPage1() {
                 and farm sustainably for the future.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <Button size="lg" className="text-lg px-8 bg-green-600 hover:bg-green-700">
+                <SimpleButton size="lg" className="text-lg px-8 bg-green-600 hover:bg-green-700">
                   Start Free Trial
                   <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 border-green-300 bg-transparent">
+                </SimpleButton>
+                <SimpleButton variant="outline" size="lg" className="text-lg px-8 border-green-300 bg-transparent">
                   Schedule Demo
-                </Button>
+                </SimpleButton>
               </div>
 
               {/* Stats */}
@@ -200,7 +200,7 @@ export default function AgricultureLandingPage1() {
                       </li>
                     ))}
                   </ul>
-                  <Button className="bg-green-600 hover:bg-green-700">Learn More</Button>
+                  <SimpleButton className="bg-green-600 hover:bg-green-700">Learn More</SimpleButton>
                 </div>
                 <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
                   <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-green-200 shadow-lg">
@@ -261,12 +261,12 @@ export default function AgricultureLandingPage1() {
               Join hundreds of farmers who are already using AgriTech to increase yields and reduce costs
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 bg-green-600 hover:bg-green-700">
+              <SimpleButton size="lg" className="text-lg px-8 bg-green-600 hover:bg-green-700">
                 Start Your Free Trial
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 border-green-300 bg-transparent">
+              </SimpleButton>
+              <SimpleButton variant="outline" size="lg" className="text-lg px-8 border-green-300 bg-transparent">
                 Contact Sales Team
-              </Button>
+              </SimpleButton>
             </div>
           </div>
         </div>

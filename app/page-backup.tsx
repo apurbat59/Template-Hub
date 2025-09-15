@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardDescription, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -117,12 +117,12 @@ export default function HomePage() {
               Dashboard
             </a>
             <Link href="/auth">
-              <Button variant="outline" size="sm" className="hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200">
+              <SimpleButton variant="outline" size="sm" className="hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200">
                 Sign In
-              </Button>
+              </SimpleButton>
             </Link>
             <Link href="/auth">
-              <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">Get Started Free</Button>
+              <SimpleButton size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">Get Started Free</SimpleButton>
             </Link>
           </nav>
         </div>
@@ -171,16 +171,16 @@ export default function HomePage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Link href="/auth">
-              <Button size="lg" className="text-lg px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
+              <SimpleButton size="lg" className="text-lg px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
                 Start Building Now - Free
                 <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              </SimpleButton>
             </Link>
             <Link href="#demos">
-              <Button variant="outline" size="lg" className="text-lg px-12 py-6 bg-transparent hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200">
+              <SimpleButton variant="outline" size="lg" className="text-lg px-12 py-6 bg-transparent hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200">
                 <Play className="w-5 h-5 mr-2" />
                 Try Live Demos
-              </Button>
+              </SimpleButton>
             </Link>
           </div>
 
@@ -241,10 +241,10 @@ export default function HomePage() {
                       />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                       <div className="absolute top-4 right-4">
-                        <Button size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                        <SimpleButton size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
                           <Play className="w-4 h-4 mr-1" />
                           Live Demo
-                        </Button>
+                        </SimpleButton>
                       </div>
                     </div>
                     <CardContent className="p-6">
@@ -261,10 +261,10 @@ export default function HomePage() {
                           <Badge variant="outline">TypeScript</Badge>
                         </div>
                         <Link href={`/templates/${category.slug}/dashboard-1`}>
-                          <Button size="sm">
+                          <SimpleButton size="sm">
                             <Eye className="w-4 h-4 mr-1" />
                             View Demo
-                          </Button>
+                          </SimpleButton>
                         </Link>
                       </div>
                     </CardContent>
@@ -286,10 +286,10 @@ export default function HomePage() {
                       />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                       <div className="absolute top-4 right-4">
-                        <Button size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                        <SimpleButton size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
                           <Play className="w-4 h-4 mr-1" />
                           Live Demo
-                        </Button>
+                        </SimpleButton>
                       </div>
                     </div>
                     <CardContent className="p-6">
@@ -306,10 +306,10 @@ export default function HomePage() {
                           <Badge variant="outline">Tailwind</Badge>
                         </div>
                         <Link href={`/templates/${category.slug}/landing-page-1`}>
-                          <Button size="sm">
+                          <SimpleButton size="sm">
                             <Eye className="w-4 h-4 mr-1" />
                             View Demo
-                          </Button>
+                          </SimpleButton>
                         </Link>
                       </div>
                     </CardContent>
@@ -331,10 +331,10 @@ export default function HomePage() {
                       </div>
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                       <div className="absolute top-4 right-4">
-                        <Button size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                        <SimpleButton size="sm" variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity">
                           <Play className="w-4 h-4 mr-1" />
                           Live Demo
-                        </Button>
+                        </SimpleButton>
                       </div>
                     </div>
                     <CardContent className="p-6">
@@ -351,10 +351,10 @@ export default function HomePage() {
                           <Badge variant="outline">JWT</Badge>
                         </div>
                         <Link href={`/templates/${category.slug}/auth-1`}>
-                          <Button size="sm">
+                          <SimpleButton size="sm">
                             <Eye className="w-4 h-4 mr-1" />
                             View Demo
-                          </Button>
+                          </SimpleButton>
                         </Link>
                       </div>
                     </CardContent>
@@ -603,15 +603,15 @@ export default function HomePage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/auth">
-                  <Button size="lg" className="w-full sm:w-auto">
+                  <SimpleButton size="lg" className="w-full sm:w-auto">
                     <Settings className="w-5 h-5 mr-2" />
                     Access Dashboard
-                  </Button>
+                  </SimpleButton>
               </Link>
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <SimpleButton variant="outline" size="lg" className="w-full sm:w-auto">
                   <Download className="w-5 h-5 mr-2" />
                   Download All Templates
-                </Button>
+                </SimpleButton>
               </div>
             </div>
 
@@ -696,11 +696,11 @@ export default function HomePage() {
                 </div>
               </div>
               <Link href="/auth">
-                <Button size="lg" variant="secondary">
+                <SimpleButton size="lg" variant="secondary">
                   <Sparkles className="w-5 h-5 mr-2" />
                   Access Dashboard
                   <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
+                </SimpleButton>
               </Link>
             </div>
             <div className="bg-gradient-to-br from-accent/10 to-secondary/10 rounded-2xl p-8 border border-border">
@@ -735,18 +735,18 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Link href="/auth">
-              <Button size="lg" variant="secondary" className="text-lg px-12 py-6 shadow-lg">
+              <SimpleButton size="lg" variant="secondary" className="text-lg px-12 py-6 shadow-lg">
                 Start Free Trial - No CC Required
-              </Button>
+              </SimpleButton>
             </Link>
             <Link href="#demo">
-              <Button
+              <SimpleButton
                 size="lg"
                 variant="outline"
                 className="text-lg px-12 py-6 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
               >
                 Watch 2-Min Demo
-              </Button>
+              </SimpleButton>
             </Link>
           </div>
           <div className="flex items-center justify-center gap-6 text-sm opacity-75">

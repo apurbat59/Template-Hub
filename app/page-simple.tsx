@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -53,12 +53,12 @@ export default function HomePage() {
               Dashboard
             </a>
             <Link href="/auth">
-              <Button variant="outline" size="sm" className="hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200">
+              <SimpleButton variant="outline" size="sm" className="hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200">
                 Sign In
-              </Button>
+              </SimpleButton>
             </Link>
             <Link href="/auth">
-              <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">Get Started Free</Button>
+              <SimpleButton size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">Get Started Free</SimpleButton>
             </Link>
           </nav>
         </div>
@@ -82,16 +82,16 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Link href="/auth">
-              <Button size="lg" className="text-lg px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
+              <SimpleButton size="lg" className="text-lg px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
                 Start Building Now - Free
                 <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              </SimpleButton>
             </Link>
             <Link href="#demos">
-              <Button variant="outline" size="lg" className="text-lg px-12 py-6 bg-transparent hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200">
+              <SimpleButton variant="outline" size="lg" className="text-lg px-12 py-6 bg-transparent hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all duration-200">
                 <Play className="w-5 h-5 mr-2" />
                 Try Live Demos
-              </Button>
+              </SimpleButton>
             </Link>
           </div>
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
@@ -147,9 +147,9 @@ export default function HomePage() {
                     <span className="text-sm text-slate-500">(128 reviews)</span>
                   </div>
                   <Link href="/templates/agriculture/dashboard-1">
-                    <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                    <SimpleButton size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
                       View Demo
-                    </Button>
+                    </SimpleButton>
                   </Link>
                 </div>
               </CardContent>
@@ -178,9 +178,9 @@ export default function HomePage() {
                     <span className="text-sm text-slate-500">(95 reviews)</span>
                   </div>
                   <Link href="/templates/agriculture/landing-page-1">
-                    <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                    <SimpleButton size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
                       View Demo
-                    </Button>
+                    </SimpleButton>
                   </Link>
                 </div>
               </CardContent>
@@ -209,9 +209,9 @@ export default function HomePage() {
                     <span className="text-sm text-slate-500">(87 reviews)</span>
                   </div>
                   <Link href="/templates/agriculture/auth-1">
-                    <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                    <SimpleButton size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
                       View Demo
-                    </Button>
+                    </SimpleButton>
                   </Link>
                 </div>
               </CardContent>
@@ -231,16 +231,16 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/auth">
-              <Button size="lg" className="text-lg px-12 py-6 bg-white text-blue-600 hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-200">
+              <SimpleButton size="lg" className="text-lg px-12 py-6 bg-white text-blue-600 hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-200">
                 Get Started Free
                 <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              </SimpleButton>
             </Link>
             <Link href="/dashboard">
-              <Button variant="outline" size="lg" className="text-lg px-12 py-6 bg-transparent border-white text-white hover:bg-white hover:text-blue-600 transition-all duration-200">
+              <SimpleButton variant="outline" size="lg" className="text-lg px-12 py-6 bg-transparent border-white text-white hover:bg-white hover:text-blue-600 transition-all duration-200">
                 <Eye className="w-5 h-5 mr-2" />
                 View Dashboard
-              </Button>
+              </SimpleButton>
             </Link>
           </div>
         </div>

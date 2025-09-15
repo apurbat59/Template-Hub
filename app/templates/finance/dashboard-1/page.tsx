@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
@@ -88,13 +88,13 @@ export default function FinanceDashboard1() {
             <Badge className="bg-emerald-100 text-emerald-800 border-emerald-200">Market Open</Badge>
           </div>
           <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm">
+            <SimpleButton variant="outline" size="sm">
               <RefreshCw className="w-4 h-4 mr-2" />
               Refresh
-            </Button>
-            <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
+            </SimpleButton>
+            <SimpleButton size="sm" className="bg-emerald-600 hover:bg-emerald-700">
               New Trade
-            </Button>
+            </SimpleButton>
           </div>
         </div>
       </header>
@@ -103,38 +103,38 @@ export default function FinanceDashboard1() {
         {/* Sidebar */}
         <aside className="w-64 bg-white border-r border-slate-200 min-h-screen p-6">
           <nav className="space-y-2">
-            <Button
+            <SimpleButton
               variant={activeTab === "overview" ? "default" : "ghost"}
               className="w-full justify-start"
               onClick={() => setActiveTab("overview")}
             >
               <BarChart3 className="w-4 h-4 mr-2" />
               Overview
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant={activeTab === "portfolio" ? "default" : "ghost"}
               className="w-full justify-start"
               onClick={() => setActiveTab("portfolio")}
             >
               <PieChart className="w-4 h-4 mr-2" />
               Portfolio
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant={activeTab === "transactions" ? "default" : "ghost"}
               className="w-full justify-start"
               onClick={() => setActiveTab("transactions")}
             >
               <CreditCard className="w-4 h-4 mr-2" />
               Transactions
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant={activeTab === "watchlist" ? "default" : "ghost"}
               className="w-full justify-start"
               onClick={() => setActiveTab("watchlist")}
             >
               <Eye className="w-4 h-4 mr-2" />
               Watchlist
-            </Button>
+            </SimpleButton>
           </nav>
         </aside>
 
@@ -148,9 +148,9 @@ export default function FinanceDashboard1() {
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <CardTitle>Portfolio Value</CardTitle>
-                      <Button variant="ghost" size="sm" onClick={() => setBalanceVisible(!balanceVisible)}>
+                      <SimpleButton variant="ghost" size="sm" onClick={() => setBalanceVisible(!balanceVisible)}>
                         {balanceVisible ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
-                      </Button>
+                      </SimpleButton>
                     </div>
                   </CardHeader>
                   <CardContent>
@@ -362,12 +362,12 @@ export default function FinanceDashboard1() {
                             </span>
                           </div>
                           <div className="mt-2 flex space-x-2">
-                            <Button variant="outline" size="sm">
+                            <SimpleButton variant="outline" size="sm">
                               Buy
-                            </Button>
-                            <Button variant="outline" size="sm">
+                            </SimpleButton>
+                            <SimpleButton variant="outline" size="sm">
                               Sell
-                            </Button>
+                            </SimpleButton>
                           </div>
                         </div>
                       </div>
@@ -474,12 +474,12 @@ export default function FinanceDashboard1() {
                             </span>
                           </div>
                           <div className="mt-2 flex space-x-2">
-                            <Button variant="outline" size="sm">
+                            <SimpleButton variant="outline" size="sm">
                               Buy
-                            </Button>
-                            <Button variant="ghost" size="sm">
+                            </SimpleButton>
+                            <SimpleButton variant="ghost" size="sm">
                               Remove
-                            </Button>
+                            </SimpleButton>
                           </div>
                         </div>
                       </div>

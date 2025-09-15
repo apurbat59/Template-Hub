@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -93,10 +93,10 @@ export default function HealthcareDashboard1() {
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm">
+            <SimpleButton variant="outline" size="sm">
               <Filter className="w-4 h-4 mr-2" />
               Filter
-            </Button>
+            </SimpleButton>
             <div className="relative">
               <Bell className="w-6 h-6 text-gray-600 cursor-pointer" />
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
@@ -113,30 +113,30 @@ export default function HealthcareDashboard1() {
         {/* Sidebar */}
         <aside className="w-64 bg-white border-r border-blue-200 min-h-screen p-6">
           <nav className="space-y-2">
-            <Button
+            <SimpleButton
               variant={activeTab === "overview" ? "default" : "ghost"}
               className="w-full justify-start"
               onClick={() => setActiveTab("overview")}
             >
               <Activity className="w-4 h-4 mr-2" />
               Overview
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant={activeTab === "patients" ? "default" : "ghost"}
               className="w-full justify-start"
               onClick={() => setActiveTab("patients")}
             >
               <Users className="w-4 h-4 mr-2" />
               Patients
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant={activeTab === "appointments" ? "default" : "ghost"}
               className="w-full justify-start"
               onClick={() => setActiveTab("appointments")}
             >
               <Calendar className="w-4 h-4 mr-2" />
               Appointments
-            </Button>
+            </SimpleButton>
           </nav>
         </aside>
 
@@ -304,12 +304,12 @@ export default function HealthcareDashboard1() {
                           >
                             {patient.status}
                           </Badge>
-                          <Button variant="outline" size="sm">
+                          <SimpleButton variant="outline" size="sm">
                             View Details
-                          </Button>
-                          <Button variant="ghost" size="sm">
+                          </SimpleButton>
+                          <SimpleButton variant="ghost" size="sm">
                             <MoreHorizontal className="w-4 h-4" />
-                          </Button>
+                          </SimpleButton>
                         </div>
                       </div>
                     ))}
@@ -350,9 +350,9 @@ export default function HealthcareDashboard1() {
                           >
                             {appointment.status}
                           </Badge>
-                          <Button variant="outline" size="sm">
+                          <SimpleButton variant="outline" size="sm">
                             {appointment.status === "pending" ? "Confirm" : "View"}
-                          </Button>
+                          </SimpleButton>
                         </div>
                       </div>
                     ))}

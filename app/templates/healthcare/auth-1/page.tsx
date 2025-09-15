@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -106,13 +106,13 @@ export default function HealthcareAuth1() {
                         Remember me
                       </Label>
                     </div>
-                    <Button variant="link" className="text-blue-600 p-0 h-auto">
+                    <SimpleButton variant="link" className="text-blue-600 p-0 h-auto">
                       Forgot password?
-                    </Button>
+                    </SimpleButton>
                   </div>
-                  <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={isLoading}>
+                  <SimpleButton type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={isLoading}>
                     {isLoading ? "Signing in..." : "Sign In"}
-                  </Button>
+                  </SimpleButton>
                 </form>
               </TabsContent>
 
@@ -211,18 +211,18 @@ export default function HealthcareAuth1() {
                     <Checkbox id="terms" className="mt-1" />
                     <Label htmlFor="terms" className="text-sm leading-relaxed">
                       I agree to the{" "}
-                      <Button variant="link" className="text-blue-600 p-0 h-auto">
+                      <SimpleButton variant="link" className="text-blue-600 p-0 h-auto">
                         Terms of Service
-                      </Button>{" "}
+                      </SimpleButton>{" "}
                       and{" "}
-                      <Button variant="link" className="text-blue-600 p-0 h-auto">
+                      <SimpleButton variant="link" className="text-blue-600 p-0 h-auto">
                         Privacy Policy
-                      </Button>
+                      </SimpleButton>
                     </Label>
                   </div>
-                  <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={isLoading}>
+                  <SimpleButton type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={isLoading}>
                     {isLoading ? "Creating Account..." : "Create Account"}
-                  </Button>
+                  </SimpleButton>
                 </form>
               </TabsContent>
             </Tabs>
@@ -237,7 +237,7 @@ export default function HealthcareAuth1() {
                 </div>
               </div>
               <div className="mt-4 grid grid-cols-2 gap-3">
-                <Button variant="outline" className="border-blue-200 bg-transparent">
+                <SimpleButton variant="outline" className="border-blue-200 bg-transparent">
                   <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
@@ -257,13 +257,13 @@ export default function HealthcareAuth1() {
                     />
                   </svg>
                   Google
-                </Button>
-                <Button variant="outline" className="border-blue-200 bg-transparent">
+                </SimpleButton>
+                <SimpleButton variant="outline" className="border-blue-200 bg-transparent">
                   <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
                   Facebook
-                </Button>
+                </SimpleButton>
               </div>
             </div>
           </CardContent>

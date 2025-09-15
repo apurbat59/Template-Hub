@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Play, Users, Trophy, Zap, Star, Download } from "lucide-react"
@@ -56,19 +56,19 @@ export default function GamingLandingPage1() {
             <a href="#leaderboard" className="text-gray-300 hover:text-white transition-colors">
               Leaderboard
             </a>
-            <Button
+            <SimpleButton
               variant="outline"
               size="sm"
               className="border-purple-500 text-purple-400 hover:bg-purple-500 bg-transparent"
             >
               Sign In
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               size="sm"
               className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
             >
               Play Now
-            </Button>
+            </SimpleButton>
           </nav>
         </div>
       </header>
@@ -88,20 +88,20 @@ export default function GamingLandingPage1() {
             cutting-edge multiplayer universe.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
+            <SimpleButton
               size="lg"
               className="text-lg px-8 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
             >
               <Play className="w-5 h-5 mr-2" />
               Start Playing
-            </Button>
-            <Button
+            </SimpleButton>
+            <SimpleButton
               variant="outline"
               size="lg"
               className="text-lg px-8 border-white/20 text-white hover:bg-white/10 bg-transparent"
             >
               Watch Trailer
-            </Button>
+            </SimpleButton>
           </div>
         </div>
       </section>
@@ -175,9 +175,9 @@ export default function GamingLandingPage1() {
                   </div>
                 </div>
                 <CardContent className="p-4">
-                  <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
+                  <SimpleButton className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
                     Play Now
-                  </Button>
+                  </SimpleButton>
                 </CardContent>
               </Card>
             ))}
@@ -194,20 +194,20 @@ export default function GamingLandingPage1() {
               Join the elite gaming community and start your journey to the top of the leaderboards
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
+              <SimpleButton
                 size="lg"
                 className="text-lg px-8 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
               >
                 <Download className="w-5 h-5 mr-2" />
                 Download Now
-              </Button>
-              <Button
+              </SimpleButton>
+              <SimpleButton
                 variant="outline"
                 size="lg"
                 className="text-lg px-8 border-white/20 text-white hover:bg-white/10 bg-transparent"
               >
                 View System Requirements
-              </Button>
+              </SimpleButton>
             </div>
           </div>
         </div>

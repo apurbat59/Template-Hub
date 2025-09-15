@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { SimpleSimpleButton } from "@/components/ui/simple-button"
+import { SimpleButton } from "@/components/ui/simple-button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
